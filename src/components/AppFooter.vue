@@ -1,16 +1,16 @@
 <template>
     <div class="footer">
         <span @click="goPage('/Home')">
-            首页
+            故事
         </span>
         <span @click="showAlert('还未开放使用')">
-            排行
+            漫画
         </span>
         <span @click="showAlert('还未开放使用')">
-            更新
+            动漫
         </span>
         <span @click="showAlert('还未开放使用')">
-            历史
+            影视
         </span>
     </div>
 </template>
