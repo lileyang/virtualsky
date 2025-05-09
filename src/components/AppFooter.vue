@@ -3,13 +3,13 @@
         <span @click="goPage('/Home')">
             首页
         </span>
-        <span>
+        <span @click="showAlert('还未开放使用')">
             排行
         </span>
-        <span>
+        <span @click="showAlert('还未开放使用')">
             更新
         </span>
-        <span>
+        <span @click="showAlert('还未开放使用')">
             历史
         </span>
     </div>
@@ -24,6 +24,9 @@ export default {
                 this.$router.push(path);
                 sessionStorage.setItem('storyScrollY', 0)
             }   
+        },
+        showAlert(msg){
+            alert(msg)
         }
     }
 
