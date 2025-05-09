@@ -3,7 +3,7 @@
         <span @click="goPage('/Home')">
             首页
         </span>
-        <span @click="goPage('/Chart')">
+        <span>
             排行
         </span>
         <span>
@@ -21,8 +21,9 @@ export default {
     methods:{
         goPage(path){
             if (this.$route.path !== path) {
-            this.$router.push(path);
-        }
+                this.$router.push(path);
+                sessionStorage.setItem('storyScrollY', 0)
+            }   
         }
     }
 

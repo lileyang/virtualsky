@@ -3,16 +3,25 @@ import Vue from 'vue'
 import Home from '@/views/Home.vue'
 import Chart from '@/views/Chart.vue'
 import StoryMenu from '@/views/StoryMenu.vue'
-
+import StoryPlay from '@/views/StoryPlay.vue'
 Vue.use(VueRouter) 
 
 const router = new VueRouter({
+    mode: 'history',
     routes: [
       {path:'/', redirect:'/Home'},
       {path:'/Home', component: Home},
       {path:'/Chart', component: Chart},
-      {path:'/StoryMenu', component: StoryMenu}
-    ]
+      {path:'/StoryMenu', component: StoryMenu},
+      {path:'/StoryPlay', component:StoryPlay}
+    ],
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition
+      } else {
+        return { x: 0, y: 0 }
+      }
+    }
   })
 
 
