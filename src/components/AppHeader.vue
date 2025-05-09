@@ -5,7 +5,7 @@
         <div class="title">
         {{ title }}
         </div>
-        <div class="search">
+        <div class="search" @click="showAlert('搜索功能还不能使用')">
             <span class="iconfont icon-icon-test"></span>
             <span>点击搜索你想要的</span>
             
@@ -18,6 +18,11 @@
 export default {
     props: {
         title: String
+    },
+    methods:{
+        showAlert(msg){
+            alert(msg)
+        }
     }
 }
 </script>
