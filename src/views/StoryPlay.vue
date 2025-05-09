@@ -66,7 +66,7 @@
     z-index: 0;
   }
   .back-btn {
-  position: absolute;
+    position: absolute;
     top: 20px;
     left: 20px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -75,7 +75,7 @@
     border-radius: 8px;
     font-size: 16px;
     color: green;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
     backdrop-filter: blur(4px);
     cursor: pointer;
     transition: all 0.3s ease;
