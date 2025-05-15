@@ -1,17 +1,16 @@
 <template>
     <div class="footer">
         <span @click="goPage('/Home')">
-            故事
+            植物大战僵尸
         </span>
+        <span @click="goPage('/Classic')">
+            名著故事
+        </span>
+        <!--
         <span @click="showAlert('还未开放使用')">
-            漫画
+            在线漫画
         </span>
-        <span @click="showAlert('还未开放使用')">
-            动漫
-        </span>
-        <span @click="showAlert('还未开放使用')">
-            影视
-        </span>
+        -->
     </div>
 </template>
 

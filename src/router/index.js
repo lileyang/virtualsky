@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 import Home from '@/views/Home.vue'
+import Classic from '@/views/Classic.vue'
 import Chart from '@/views/Chart.vue'
 import StoryMenu from '@/views/StoryMenu.vue'
 import StoryPlay from '@/views/StoryPlay.vue'
@@ -11,9 +12,10 @@ const router = new VueRouter({
     routes: [
       {path:'/', redirect:'/Home'},
       {path:'/Home', component: Home},
+      {path:'/Classic', component: Classic},
       {path:'/Chart', component: Chart},
       {path:'/StoryMenu', component: StoryMenu},
-      {path:'/StoryPlay', component:StoryPlay}
+      {path:'/StoryPlay', component:StoryPlay},
     ],
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
