@@ -1,9 +1,13 @@
 <template>
     <div class="footer">
-        <span @click="goPage('/Home')">
+        <span 
+        :class="{ active: $route.path === '/Home' }"
+        @click="goPage('/Home')">
             植物大战僵尸
         </span>
-        <span @click="goPage('/Classic')">
+        <span 
+        :class="{ active: $route.path === '/Classic' }"
+        @click="goPage('/Classic')">
             名著故事
         </span>
         <!--
@@ -42,13 +46,17 @@ export default {
     line-height: 12vw;
     justify-content: space-evenly;
     
-    span{
+    span {
         font-family: 'MyFont', sans-serif;
         font-size: 6vw;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        color: saddlebrown;
+        color: rgb(120, 120, 120);
+
+        &.active {
+            color: brown;
+        }
     }
 }
 </style>
