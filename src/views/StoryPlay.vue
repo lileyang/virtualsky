@@ -209,6 +209,7 @@ export default {
   background: none;
   border: none;
   font-size: 4vw;
+  height: 6vw;
   cursor: pointer;
   flex-shrink: 0;
 }
