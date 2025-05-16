@@ -1,7 +1,16 @@
 <template>
   <div class="story" ref="scroll">
-    <img class="img" :src="story.img" alt="" />
-    <div class="title">目录({{ story.list ? story.list.length : 0 }})</div>
+    <div class="head">
+      <button class="back-btn" @click="goBack">返回</button>
+      <div class="name">{{ this.story.name }}</div>
+    </div>
+    <div>
+      <img class="img" :src="story.img" alt="" />
+    </div>
+    
+    <div class="title">
+      <span>目录({{ story.list ? story.list.length : 0 }})</span>      
+    </div>
     <div class="menu">
       <div
         class="sub"
@@ -20,7 +29,7 @@
 export default {
   data() {
     return {
-      story: {}
+      story: {},
     }
   },
   mounted() {
@@ -47,6 +56,9 @@ export default {
     })
   },
   methods: {
+    goBack() {
+      this.$router.back()
+    },
     goPlay(item) {
       const scrollContainer = this.$refs.scroll
       console.log(scrollContainer.scrollY)
@@ -67,12 +79,39 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.back-btn {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 2vw 4vw;
+      margin-left: 1vw;
+      border-radius: 8px;
+      font-size: 16px;
+      color: saddlebrown;
+      box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
 .story {
   background-color: rgb(255, 255, 255);
   font-family: 'MyFont', sans-serif;
   width: 100vw;
   height: 100vh;
   overflow-y: auto;
+  .head{
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 12vw;
+    background-color: rgba(221, 139, 16, 0.5);
+    .name{
+      margin: 0 auto;
+      font-size: 6vw;
+      color: brown;
+    }
+  }
   .img {
     width: 100vw;
   }

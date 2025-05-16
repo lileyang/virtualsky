@@ -2,7 +2,7 @@
     <div class="header">
         <div class="icon">
         </div>
-        <div class="title">
+        <div class="title" @click="goPage('/Home')">
         {{ title }}
         </div>
         <div class="search" @click="showAlert('搜索功能还不能使用')">
@@ -22,7 +22,13 @@ export default {
     methods:{
         showAlert(msg){
             alert(msg)
-        }
+        },
+        goPage(path){
+            if (this.$route.path !== path) {
+                this.$router.push(path);
+                sessionStorage.setItem('storyScrollY', 0)
+            }   
+        },
     }
 }
 </script>
