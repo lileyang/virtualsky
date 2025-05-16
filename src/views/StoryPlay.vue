@@ -1,115 +1,266 @@
 <template>
-    <div class="app">
-      <div class="bg" :style="{ backgroundImage: 'url(' + img + ')' }"></div>
-      <!-- 返回按钮 -->
-      <button class="back-btn" @click="goBack">⬅ 返回</button>
-      <img class="icon" :src="img" />
-      <audio controls :src="audioSrc" autoplay></audio>
+  <div class="app">
+    <div class="bg" :style="{ backgroundImage: 'url(' + img + ')' }"></div>
+    <button class="back-btn" @click="goBack">⬅ 返回</button>
+    <img class="icon" :src="img" />
+
+    <div class="custom-audio-player">
+      <audio ref="audio" :src="audioSrc" preload="metadata" autoplay muted playsinline></audio>
+
+      <div class="audio">
+        <button @click="onUserPlay" class="play-btn">
+          {{ isPlaying ? '⏸️' : '▶️' }}
+        </button>
+        <input
+          type="range"
+          min="0"
+          :max="duration"
+          step="0.1"
+          v-model="currentTime"
+          @input="onSeek"
+          class="slider"
+        />
+        <span class="time-text">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</span>
+      </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        audioSrc: '',
-        img: ''
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      img: '',
+      audioSrc: '',
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0,
+    }
+  },
+  mounted() {
+    this.img = this.$route.query.img
+    const storyName = this.$route.query.storyName
+    const file = this.$route.query.file
+    const relativePath = `./${storyName}/${file}.m4a`
+
+    try {
+      const context = require.context('@/assets/audio', true, /\.m4a$/)
+      this.audioSrc = context(relativePath).default
+    } catch (e) {
+      console.warn('音频文件找不到：', relativePath)
+    }
+
+    this.$nextTick(() => {
+      const audio = this.$refs.audio
+      if (audio) {
+        // 播放相关事件
+        audio.addEventListener('loadedmetadata', () => {
+          this.duration = audio.duration
+        })
+        audio.addEventListener('timeupdate', () => {
+          this.currentTime = audio.currentTime
+        })
+        audio.addEventListener('ended', () => {
+          this.isPlaying = false
+          this.currentTime = 0
+        })
+        audio.addEventListener('play', () => {
+          this.isPlaying = true
+        })
+        audio.addEventListener('pause', () => {
+          this.isPlaying = false
+        })
+
+        // 自动播放尝试
+        audio.muted = true
+        const playPromise = audio.play()
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              audio.muted = false // 播放成功，解除静音
+            })
+            .catch((err) => {
+              console.warn('自动播放失败，等待用户交互：', err)
+              audio.muted = false
+              // 等用户点击
+            })
+        }
+      }
+    })
+  },
+  methods: {
+    goBack() {
+      this.$router.back()
+    },
+    onUserPlay() {
+      const audio = this.$refs.audio
+      if (!audio) return
+
+      if (this.isPlaying) {
+        audio.pause()
+      } else {
+        const playPromise = audio.play()
+        if (playPromise !== undefined) {
+          playPromise.catch(err => {
+            console.warn('播放失败：', err)
+          })
+        }
       }
     },
-    mounted() {
-      this.img = this.$route.query.img
-      const storyName = this.$route.query.storyName
-      const file = this.$route.query.file
-      const relativePath = `./${storyName}/${file}.m4a`
-  
-      try {
-        const context = require.context('@/assets/audio', true, /\.m4a$/)
-        this.audioSrc = context(relativePath).default
-      } catch (e) {
-        console.warn('音频文件找不到：', relativePath)
+    onSeek(event) {
+      const audio = this.$refs.audio
+      const val = parseFloat(event.target.value)
+      if (!isNaN(val) && audio.readyState > 0) {
+        audio.currentTime = val
+        this.currentTime = val
       }
     },
-    methods: {
-      goBack() {
-        this.$router.back()
-      }
+    formatTime(time) {
+      const m = Math.floor(time / 60)
+      const s = Math.floor(time % 60)
+      return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
     }
   }
-  </script>
-  
-  <style lang="less" scoped>
-  .app {
-    width: 100vw;
-    height: 100vh;
-    overflow-y: auto;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: "Helvetica Neue", sans-serif;
-    background: #f0f0f0;
-    padding: 0 5vw;
-  }
-  
-  .bg {
-    position: fixed;
-    top: calc(22vh);
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(16px);
-    opacity: 0.3;
-    z-index: 0;
-  }
-  .back-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 16px;
-    color: green;
-    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
-    backdrop-filter: blur(4px);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 2;
-  }
+}
 
-  .back-btn:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    transform: scale(1.05);
-  }
-  
-  .icon {
-    width: 50vw;
-    height: 50vw;
-    border-radius: 20px;
-    object-fit: cover;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    margin-bottom: 8vh;
-    transition: transform 0.3s ease;
-  }
-  
-  .icon:hover {
-    transform: scale(1.05);
-  }
-  
-  audio {
-    width: 80vw;
-    max-width: 400px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(6px);
-    padding: 6px;
-    outline: none;
-  }
-  </style>
-  
+</script>
+
+<style lang="less" scoped>
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Helvetica Neue", sans-serif;
+  background: #f0f0f0;
+  padding: 0 5vw;
+}
+
+.bg {
+  position: fixed;
+  top: calc(22vh);
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(16px);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: green;
+  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+.back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 50vw;
+  height: 50vw;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 8vh;
+  transition: transform 0.3s ease;
+}
+.icon:hover {
+  transform: scale(1.05);
+}
+
+/* 自定义播放器样式 */
+.custom-audio-player {
+  width: 80vw;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4vw;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  padding: 4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+  position: relative;
+  z-index: 10;
+}
+
+.play-btn {
+  background: none;
+  border: none;
+  font-size: 4vw;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.time-text {
+  font-size: 3vw;
+  color: #333;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.slider {
+  flex-grow: 1;
+  appearance: none;
+  height: 2vw;
+  background: #ccc;
+  border-radius: 1vw;
+  touch-action: pan-y;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 滑块样式 */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 4vw;   /* 适当调大滑块直径 */
+  height: 4vw;
+  background: green;
+  border-radius: 50%;
+  cursor: pointer;
+  /* 去掉 position 和 top */
+  /* position: relative; */
+  /* top: -3px; */
+  margin-top: 0px; /* 让滑块垂直居中，计算方式：-(滑块高度 - 轨道高度)/2 */
+}
+
+/* Firefox 下的滑块 */
+.slider::-moz-range-thumb {
+  width: 4vw;
+  height: 4vw;
+  background: green;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+</style>

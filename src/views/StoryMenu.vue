@@ -79,14 +79,26 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.back-btn {
-      position: absolute;
+.story {
+  background-color: rgb(255, 255, 255);
+  font-family: 'MyFont', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  .head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 12vw;
+    background-color: rgba(221, 139, 16, 0.5);
+    .back-btn {
       background-color: rgba(255, 255, 255, 0.2);
       border: none;
       padding: 2vw 4vw;
       margin-left: 1vw;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 4vw;
       color: saddlebrown;
       box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
       backdrop-filter: blur(4px);
@@ -94,22 +106,13 @@ export default {
       transition: all 0.3s ease;
       z-index: 2;
     }
-.story {
-  background-color: rgb(255, 255, 255);
-  font-family: 'MyFont', sans-serif;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
-  .head{
-    display: flex;
-    align-items: center;
-    width: 100vw;
-    height: 12vw;
-    background-color: rgba(221, 139, 16, 0.5);
-    .name{
-      margin: 0 auto;
+    .name {
+      position: absolute;
+      left: 0;
+      right: 0;
       font-size: 6vw;
       color: brown;
+      text-align: center;
     }
   }
   .img {
