@@ -2,6 +2,9 @@
   <div class="app">
     <div class="bg" :style="{ backgroundImage: 'url(' + img + ')' }"></div>
     <button class="back-btn" @click="goBack">⬅ 返回</button>
+
+    <div class="story-name">{{ fileName }}</div>
+
     <img class="icon" :src="img" />
 
     <div class="custom-audio-player">
@@ -30,6 +33,8 @@
 export default {
   data() {
     return {
+      storyName: '',
+      fileName: '',
       img: '',
       audioSrc: '',
       isPlaying: false,
@@ -39,9 +44,9 @@ export default {
   },
   mounted() {
     this.img = this.$route.query.img
-    const storyName = this.$route.query.storyName
-    const file = this.$route.query.file
-    const relativePath = `./${storyName}/${file}.m4a`
+    this.storyName = this.$route.query.storyName
+    this.fileName = this.$route.query.file
+    const relativePath = `./${this.storyName}/${this.fileName}.m4a`
 
     try {
       const context = require.context('@/assets/audio', true, /\.m4a$/)
@@ -142,7 +147,6 @@ export default {
 
 .bg {
   position: fixed;
-  top: calc(22vh);
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -175,6 +179,13 @@ export default {
   transform: scale(1.05);
 }
 
+.story-name{
+  margin-bottom: 4vw;
+  font-size: larger;
+  font-weight: 800;
+  color: brown;
+}
+
 .icon {
   width: 50vw;
   height: 50vw;
@@ -183,6 +194,7 @@ export default {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   margin-bottom: 8vh;
   transition: transform 0.3s ease;
+  z-index: 2;
 }
 .icon:hover {
   transform: scale(1.05);
@@ -191,7 +203,7 @@ export default {
 /* 自定义播放器样式 */
 .custom-audio-player {
   width: 80vw;
-  max-width: 400px;
+  min-width: 80vw;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4vw;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);

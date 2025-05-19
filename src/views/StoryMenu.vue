@@ -61,7 +61,6 @@ export default {
     },
     goPlay(item) {
       const scrollContainer = this.$refs.scroll
-      console.log(scrollContainer.scrollY)
       if (scrollContainer) {
         sessionStorage.setItem('storyScrollY', scrollContainer.scrollTop)
       }
