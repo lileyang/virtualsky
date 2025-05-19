@@ -36,6 +36,7 @@ export default {
 <style lang="less" scoped>
 
 .header {
+    z-index: 100;
     display: flex;
     width: 100vw;
     height: 10vw;

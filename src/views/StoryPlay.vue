@@ -7,6 +7,8 @@
 
     <img class="icon" :src="img" />
 
+    <!-- <audio controls :src="audioSrc" autoplay></audio> -->
+
     <div class="custom-audio-player">
       <audio ref="audio" :src="audioSrc" preload="metadata" autoplay muted playsinline></audio>
 
@@ -95,6 +97,7 @@ export default {
   },
   methods: {
     goBack() {
+      console.log(this.$router)
       this.$router.back()
     },
     onUserPlay() {
@@ -252,9 +255,6 @@ export default {
   background: green;
   border-radius: 50%;
   cursor: pointer;
-  /* 去掉 position 和 top */
-  /* position: relative; */
-  /* top: -3px; */
   margin-top: 0px; /* 让滑块垂直居中，计算方式：-(滑块高度 - 轨道高度)/2 */
 }
 
