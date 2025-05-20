@@ -42,25 +42,22 @@ export default {
       isPlaying: false,
       currentTime: 0,
       duration: 0,
+      playList: [],   // 播放列表
+      currentIndex: 0// 当前播放的索引
     }
   },
   mounted() {
-    this.img = this.$route.query.img
-    this.storyName = this.$route.query.storyName
-    this.fileName = this.$route.query.file
-    const relativePath = `./${this.storyName}/${this.fileName}.m4a`
-
-    try {
-      const context = require.context('@/assets/audio', true, /\.m4a$/)
-      this.audioSrc = context(relativePath).default
-    } catch (e) {
-      console.warn('音频文件找不到：', relativePath)
-    }
+    const query = this.$route.query
+    this.img = query.img
+    this.storyName = query.storyName
+    this.fileName = query.file
+    this.playList = JSON.parse(query.list || '[]')
+    this.currentIndex = this.playList.indexOf(this.fileName)
+    this.loadAudio()
 
     this.$nextTick(() => {
       const audio = this.$refs.audio
       if (audio) {
-        // 播放相关事件
         audio.addEventListener('loadedmetadata', () => {
           this.duration = audio.duration
         })
@@ -70,6 +67,7 @@ export default {
         audio.addEventListener('ended', () => {
           this.isPlaying = false
           this.currentTime = 0
+          this.playNext() // 播放下一集
         })
         audio.addEventListener('play', () => {
           this.isPlaying = true
@@ -77,58 +75,73 @@ export default {
         audio.addEventListener('pause', () => {
           this.isPlaying = false
         })
-
-        // 自动播放尝试
-        audio.muted = true
-        const playPromise = audio.play()
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              audio.muted = false // 播放成功，解除静音
-            })
-            .catch((err) => {
-              console.warn('自动播放失败，等待用户交互：', err)
-              audio.muted = false
-              // 等用户点击
-            })
-        }
       }
     })
   },
   methods: {
-    goBack() {
-      console.log(this.$router)
-      this.$router.back()
+    loadAudio() {
+      if (!this.storyName || !this.fileName) return
+
+      const relativePath = `./${this.storyName}/${this.fileName}.m4a`
+
+      try {
+        const context = require.context('@/assets/audio', true, /\.m4a$/)
+        this.audioSrc = context(relativePath).default
+      } catch (e) {
+        console.warn('音频文件找不到：', relativePath)
+      }
+
+      // 等待 audio 标签刷新 src
+      this.$nextTick(() => {
+        const audio = this.$refs.audio
+        if (audio) {
+          audio.load()
+          audio.play().catch(err => {
+            console.warn('自动播放失败：', err)
+          })
+        }
+      })
     },
+
+    playNext() {
+      if (this.currentIndex + 1 < this.playList.length) {
+        this.currentIndex++
+        this.fileName = this.playList[this.currentIndex]
+        this.loadAudio()
+      } else {
+        console.log('播放完毕：已到最后一集')
+      }
+    },
+
     onUserPlay() {
       const audio = this.$refs.audio
-      if (!audio) return
-
-      if (this.isPlaying) {
-        audio.pause()
-      } else {
-        const playPromise = audio.play()
-        if (playPromise !== undefined) {
-          playPromise.catch(err => {
-            console.warn('播放失败：', err)
-          })
+      if (audio) {
+        if (audio.paused) {
+          audio.play()
+        } else {
+          audio.pause()
         }
       }
     },
-    onSeek(event) {
+
+    onSeek() {
       const audio = this.$refs.audio
-      const val = parseFloat(event.target.value)
-      if (!isNaN(val) && audio.readyState > 0) {
-        audio.currentTime = val
-        this.currentTime = val
+      if (audio) {
+        audio.currentTime = this.currentTime
       }
     },
-    formatTime(time) {
-      const m = Math.floor(time / 60)
-      const s = Math.floor(time % 60)
-      return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
+
+    formatTime(sec) {
+      const m = Math.floor(sec / 60)
+      const s = Math.floor(sec % 60)
+      return `${m}:${s < 10 ? '0' + s : s}`
+    },
+
+    goBack() {
+      this.$router.back()
     }
   }
+
 }
 
 </script>

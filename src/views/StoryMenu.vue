@@ -69,7 +69,8 @@ export default {
         query: {
           storyName: this.story.name,
           file: item,
-          img: this.story.img
+          img: this.story.img,
+          list: JSON.stringify(this.story.list),
         }
       })
     }
