@@ -77,7 +77,6 @@ export default {
       width: 100vw;
       height: 100vw;
       object-fit: cover;
-      /* 或 contain，看需求 */
     }
   }
   
