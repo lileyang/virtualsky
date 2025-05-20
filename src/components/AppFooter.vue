@@ -1,14 +1,14 @@
 <template>
     <div class="footer">
         <span 
-        :class="{ active: $route.path === '/Home' }"
-        @click="goPage('/Home')">
-            植物大战僵尸
-        </span>
-        <span 
         :class="{ active: $route.path === '/Classic' }"
         @click="goPage('/Classic')">
             名著故事
+        </span>
+        <span 
+        :class="{ active: $route.path === '/Home' }"
+        @click="goPage('/Home')">
+            植物大战僵尸
         </span>
         <!--
         <span @click="showAlert('还未开放使用')">

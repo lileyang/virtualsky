@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     routes: [
-      {path:'/', redirect:'/Home'},
+      {path:'/', redirect:'/Classic'},
       {path:'/Home', component: Home},
       {path:'/Classic', component: Classic},
       {path:'/Chart', component: Chart},

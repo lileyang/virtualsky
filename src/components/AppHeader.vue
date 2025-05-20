@@ -2,7 +2,7 @@
     <div class="header">
         <div class="icon">
         </div>
-        <div class="title" @click="goPage('/Home')">
+        <div class="title" @click="goPage('/Classic')">
         {{ title }}
         </div>
         <div class="search" @click="showAlert('搜索功能还不能使用')">
