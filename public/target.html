@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>请用浏览器打开</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    .btn {
+      background: #007aff;
+      color: white;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>请点击下方按钮，在浏览器中打开</h2>
+  <a class="btn" id="open" href="#" target="_blank">打开网页</a>
+  <p style="margin-top: 20px; font-size: 14px;">如未能跳转，请手动复制以下地址：</p>
+  <textarea id="url" readonly style="width:90%;height:60px;font-size:16px;"></textarea>
+
+  <script>
+    // 获取跳转参数
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("target") || "https://virtualsky.pages.dev";
+
+    document.getElementById("open").href = target;
+    document.getElementById("url").value = target;
+  </script>
+</body>
+</html>
