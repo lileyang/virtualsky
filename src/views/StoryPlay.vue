@@ -1,12 +1,14 @@
 <template>
   <div class="app">
     <div class="bg" :style="{ backgroundImage: 'url(' + img + ')' }"></div>
-    <button class="back-btn" @click="goBack">⬅ 返回</button>
-
+    <button class="back-btn" @click="goBack">返回</button>
     <div class="story-name">{{ fileName }}</div>
-
-    <img class="icon" :src="img" />
-
+    <div class="mid-layout">
+      <button class="btn" @click="playPrev">⬅</button>      
+      <img class="icon" :src="img" />
+      <button class="btn" @click="playNext">➡</button>
+    </div>
+    
     <!-- <audio controls :src="audioSrc" autoplay></audio> -->
 
     <div class="custom-audio-player">
@@ -28,6 +30,7 @@
         <span class="time-text">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</span>
       </div>
     </div>
+    <div class="toast" v-if="toastMessage">{{ toastMessage }}</div>
   </div>
 </template>
 
@@ -43,7 +46,9 @@ export default {
       currentTime: 0,
       duration: 0,
       playList: [],   // 播放列表
-      currentIndex: 0// 当前播放的索引
+      currentIndex: 0,// 当前播放的索引
+      toastMessage: '',   // ✅ Toast 内容
+      toastTimeout: null  // ✅ Toast 定时器
     }
   },
   mounted() {
@@ -81,38 +86,43 @@ export default {
   methods: {
     loadAudio() {
       if (!this.storyName || !this.fileName) return
-
       const relativePath = `./${this.storyName}/${this.fileName}.m4a`
-
       try {
         const context = require.context('@/assets/audio', true, /\.m4a$/)
         this.audioSrc = context(relativePath).default
       } catch (e) {
         console.warn('音频文件找不到：', relativePath)
+        this.showPlayTip('音频加载失败')
       }
-
-      // 等待 audio 标签刷新 src
       this.$nextTick(() => {
         const audio = this.$refs.audio
         if (audio) {
           audio.load()
           audio.play().catch(err => {
             console.warn('自动播放失败：', err)
+            this.showPlayTip('点击播放音频')
           })
         }
       })
     },
-
+    playPrev() {
+      if (this.currentIndex > 0) {
+        this.currentIndex-- 
+        this.fileName = this.playList[this.currentIndex]
+        this.loadAudio()
+      } else {
+        this.showPlayTip('已经是第一集')
+      }
+    },
     playNext() {
       if (this.currentIndex + 1 < this.playList.length) {
         this.currentIndex++
         this.fileName = this.playList[this.currentIndex]
         this.loadAudio()
       } else {
-        console.log('播放完毕：已到最后一集')
+        this.showPlayTip('播放完毕：已到最后一集')
       }
     },
-
     onUserPlay() {
       const audio = this.$refs.audio
       if (audio) {
@@ -123,22 +133,26 @@ export default {
         }
       }
     },
-
     onSeek() {
       const audio = this.$refs.audio
       if (audio) {
         audio.currentTime = this.currentTime
       }
     },
-
     formatTime(sec) {
       const m = Math.floor(sec / 60)
       const s = Math.floor(sec % 60)
       return `${m}:${s < 10 ? '0' + s : s}`
     },
-
     goBack() {
       this.$router.back()
+    },
+    showPlayTip(msg) {
+      this.toastMessage = msg
+      clearTimeout(this.toastTimeout)
+      this.toastTimeout = setTimeout(() => {
+        this.toastMessage = ''
+      }, 2000)
     }
   }
 
@@ -190,6 +204,7 @@ export default {
   transition: all 0.3s ease;
   z-index: 2;
 }
+
 .back-btn:hover {
   background-color: rgba(255, 255, 255, 0.9);
   transform: scale(1.05);
@@ -202,13 +217,33 @@ export default {
   color: brown;
 }
 
+.mid-layout {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  .btn{
+    margin: auto 0;
+    width: 16vw;
+    height: 16vw;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: green;
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+}
+
 .icon {
   width: 50vw;
   height: 50vw;
   border-radius: 20px;
   object-fit: cover;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  margin-bottom: 8vh;
   transition: transform 0.3s ease;
   z-index: 2;
 }
@@ -218,6 +253,7 @@ export default {
 
 /* 自定义播放器样式 */
 .custom-audio-player {
+  margin-top: 8vh;
   width: 80vw;
   min-width: 80vw;
   background: rgba(255, 255, 255, 0.2);
@@ -288,5 +324,28 @@ export default {
   width: 100%;
   flex-wrap: nowrap;
   overflow: hidden;
+}
+
+.toast {
+  display: block;
+  position: fixed;
+  width: 80vw;
+  bottom: 50vh;
+  left: 50%;
+  transform: translateX(0%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 2vw 4vw;
+  border-radius: 4vw;
+  font-size: 4vw;
+  z-index: 999;
+  animation: fade-in-out 2s ease-in-out;
+}
+
+@keyframes fade-in-out {
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
 }
 </style>
