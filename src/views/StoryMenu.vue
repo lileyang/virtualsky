@@ -126,7 +126,7 @@ export default {
   }
   .menu {
     padding: 0vw 4vw 4vw 4vw;
-    height: 100%;
+    // height: 100%;
     .sub {
       display: flex;
       justify-content: space-between;

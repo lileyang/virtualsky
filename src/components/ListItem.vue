@@ -15,7 +15,12 @@ export default {
     props:['item'],
     methods:{
         openStory(){
-            this.$router.push({ path: '/StoryMenu', query: { story: this.item } });
+            if(this.item.type === 'audio'){
+                this.$router.push({ path: '/StoryMenu', query: { story: this.item } });
+            }else if(this.item.type === 'pdf'){
+                this.$router.push({ path: '/BookMenu', query: { book: this.item } });
+            }
+            
         }
     }
 }

@@ -5,6 +5,9 @@ import Classic from '@/views/Classic.vue'
 import Cartoon from '@/views/Cartoon.vue'
 import StoryMenu from '@/views/StoryMenu.vue'
 import StoryPlay from '@/views/StoryPlay.vue'
+import BookMenu from '@/views/BookMenu.vue'
+import PdfViewer from '@/views/PdfViewer';
+
 Vue.use(VueRouter) 
 
 const router = new VueRouter({
@@ -16,6 +19,8 @@ const router = new VueRouter({
       {path:'/Cartoon', component: Cartoon},
       {path:'/StoryMenu', component: StoryMenu},
       {path:'/StoryPlay', component:StoryPlay},
+      {path:'/BookMenu', component: BookMenu},
+      {path:'/PdfViewer', component: PdfViewer},
     ],
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {

@@ -10,11 +10,11 @@
         @click="goPage('/Home')">
             植物大战僵尸
         </span>
-        <!-- <span 
+        <span 
         :class="{ active: $route.path === '/Cartoon' }"
         @click="goPage('/Cartoon')">
             在线漫画
-        </span> -->
+        </span>
     </div>
 </template>
 
