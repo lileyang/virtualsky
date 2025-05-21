@@ -15,11 +15,6 @@
         @click="goPage('/Cartoon')">
             在线漫画
         </span> -->
-        <!--
-        <span @click="showAlert('还未开放使用')">
-            在线漫画
-        </span>
-        -->
     </div>
 </template>
 
