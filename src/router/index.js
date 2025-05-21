@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import Home from '@/views/Home.vue'
 import Classic from '@/views/Classic.vue'
-import Chart from '@/views/Chart.vue'
+import Cartoon from '@/views/Cartoon.vue'
 import StoryMenu from '@/views/StoryMenu.vue'
 import StoryPlay from '@/views/StoryPlay.vue'
 Vue.use(VueRouter) 
@@ -13,7 +13,7 @@ const router = new VueRouter({
       {path:'/', redirect:'/Classic'},
       {path:'/Home', component: Home},
       {path:'/Classic', component: Classic},
-      {path:'/Chart', component: Chart},
+      {path:'/Cartoon', component: Cartoon},
       {path:'/StoryMenu', component: StoryMenu},
       {path:'/StoryPlay', component:StoryPlay},
     ],

@@ -12,7 +12,7 @@
     <!-- <audio controls :src="audioSrc" autoplay></audio> -->
 
     <div class="custom-audio-player">
-      <audio ref="audio" :src="audioSrc" preload="metadata" autoplay muted playsinline></audio>
+      <audio ref="audio" :src="audioSrc" preload="metadata" autoplay playsinline></audio>
 
       <div class="audio">
         <button @click="onUserPlay" class="play-btn">
