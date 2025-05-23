@@ -1,21 +1,10 @@
 <template>
   <div ref="scrollContainer" class="pdf-scroll-container">
     <div v-if="!pdfDoc" class="loading-overlay">
-      <div class="spinner-wrapper">
-        <svg viewBox="0 0 36 36" class="circular-chart">
-          <path class="circle-bg"
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
-          <path class="circle"
-                :stroke-dasharray="loadingProgress + ', 100'"
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
-          <text x="18" y="20.35" class="percentage">{{ loadingProgress }}%</text>
-        </svg>
-      </div>
+      <div class="spinner"></div>
+      <div class="progress-text">{{ loadProgress }}%</div>
     </div>
+
 
     <button class="back-btn" @click="goBack">返回</button>
     <div
@@ -63,7 +52,7 @@ export default {
       pageHeights: [],
       defaultPageHeight: 1200,
       visiblePages: new Set(),
-      loadingProgress: 0,
+      loadProgress: 0,
     };
   },
   mounted() {
@@ -95,12 +84,10 @@ export default {
         disableStream: false,  // 显式启用流式加载
         disableAutoFetch: false, // 让 PDF.js 在用户快滚动时预取页面
         withCredentials: false,
-        // ✅ 设置进度回调
-        onProgress: (progressData) => {
-          const percent = Math.floor((progressData.loaded / progressData.total) * 100);
-          this.loadingProgress = percent;
-        }
       });
+      loadingTask.onProgress = ({ loaded, total }) => {
+        this.loadProgress = Math.min(Math.round((loaded / total) * 100), 100);
+      };
 
       this.pdfDoc = await loadingTask.promise;
       this.totalPages = this.pdfDoc.numPages;
@@ -288,8 +275,8 @@ export default {
 }
 
 .spinner {
-  width: 60px;
-  height: 60px;
+  width: 72px;
+  height: 72px;
   border: 6px solid #ccc;
   border-top-color: green;
   border-radius: 50%;
@@ -302,38 +289,11 @@ export default {
   }
 }
 
-.spinner-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.circular-chart {
-  display: block;
-  margin: auto;
-  max-width: 120px;
-  max-height: 120px;
-}
-
-.circle-bg {
-  fill: none;
-  stroke: #eee;
-  stroke-width: 3.8;
-}
-
-.circle {
-  fill: none;
-  stroke-width: 2.8;
-  stroke: #4caf50;
-  stroke-linecap: round;
-  transition: stroke-dasharray 0.3s ease;
-}
-
-.percentage {
-  fill: #4caf50;
-  font-family: sans-serif;
-  font-size: 0.5em;
-  text-anchor: middle;
+.progress-text{
+  position: absolute;
+  color: green;
+  font-family: 'MyFont', sans-serif;
+  font-size: 20px;
 }
 
 </style>
