@@ -65,8 +65,9 @@ export default {
             {name:'3',content:[{name:'上',file:'3_0.pdf'},{name:'中',file:'3_1.pdf'},{name:'下',file:'3_2.pdf'}]},
             {name:'4',content:[{name:'上',file:'4_0.pdf'},{name:'中',file:'4_1.pdf'},{name:'下',file:'4_2.pdf'}]},
             {name:'5',content:[{name:'上',file:'5_0.pdf'},{name:'中',file:'5_1.pdf'},{name:'下',file:'5_2.pdf'}]},
+            {name:'6',content:[{name:'上',file:'6_0.pdf'},{name:'中',file:'6_1.pdf'},{name:'下',file:'6_2.pdf'}]},
           ]},
-        {type:'pdf', name:"IQ博士", img:require("@/assets/img/pdf/IQ博士.jpg"), detail:"《IQ博士》是鸟山明继《龙珠》前的成名作，连载于1980-1984年，奠定了其无厘头幽默风格。故事围绕则卷千兵卫博士发明的机器人阿拉蕾展开，她力大无穷但心智幼稚，与企鹅村的奇葩居民（如吃草莓的超人、尼可家大王等）共同制造混乱，讽刺了当时日本流行文化。‌‌", update:"2025-08-02", 
+        {type:'pdf', name:"阿拉蕾", img:require("@/assets/img/pdf/阿拉蕾.jpg"), detail:"《阿拉蕾》是鸟山明继《龙珠》前的成名作，连载于1980-1984年，奠定了其无厘头幽默风格。故事围绕则卷千兵卫博士发明的机器人阿拉蕾展开，她力大无穷但心智幼稚，与企鹅村的奇葩居民（如吃草莓的超人、尼可家大王等）共同制造混乱，讽刺了当时日本流行文化。‌‌", update:"2025-08-02", 
           list: [
             {name:'1',content:[{name:'上',file:'1_0.pdf'},{name:'中',file:'1_1.pdf'},{name:'下',file:'1_2.pdf'}]},
             {name:'2',content:[{name:'上',file:'2_0.pdf'},{name:'中',file:'2_1.pdf'},{name:'下',file:'2_2.pdf'}]},
@@ -79,6 +80,10 @@ export default {
             {name:'9',content:[{name:'上',file:'9_0.pdf'},{name:'中',file:'9_1.pdf'},{name:'下',file:'9_2.pdf'}]},
           ]},
         {type:'pdf', name:"灌篮高手", img:require("@/assets/img/pdf/灌篮高手.jpg"), detail:"《灌篮高手》是日本漫画家井上雄彦以高中篮球为题材的少年漫画，于《周刊少年Jump》1990年42号~1996年27号上连载，单行本在17个国家和地区发行。与《足球小将》和《棒球英豪》合称为日本运动漫画三大巅峰之作。‌‌", update:"2025-08-16", list: [{name:'1',content:[{name:'上',file:'1_0.pdf'},{name:'中',file:'1_1.pdf'},{name:'下',file:'1_2.pdf'}]}]},
+        {type:'pdf', name:"圣斗士星矢", img:require("@/assets/img/pdf/圣斗士星矢.jpg"), detail:"《圣斗士星矢》是日本漫画家车田正美在《周刊少年JUMP》1986年1・2合并号（1985年12月发售）上开始连载的漫画，漫画于1990年49号完结。", update:"2025-09-02", 
+          list: [
+            {name:'1',content:[{name:'上',file:'1_0.pdf'},{name:'中',file:'1_1.pdf'},{name:'下',file:'1_2.pdf'}]},
+          ]},
         {type:'pdf', name:"棋魂", img:require("@/assets/img/pdf/棋魂.jpg"), detail:"《棋魂》（日语：ヒカルの碁，中文意义为“光的围棋”，“光之棋”）是日本《周刊少年JUMP》（集英社）连载的以围棋为题材的少年漫画。作者是堀田由美（ほったゆみ），漫画由小畑健绘制，并由日本棋院的女棋士梅泽由香里担当监修，‌", update:"2025-08-18", list: [{name:'1',content:[{name:'上',file:'1_0.pdf'},{name:'中',file:'1_1.pdf'},{name:'下',file:'1_2.pdf'}]}]},
         {type:'pdf', name:"浪客剑心", img:require("@/assets/img/pdf/浪客剑心.jpg"), detail:"《浪客剑心 -明治剑客浪漫谭-》（るろうに剣心 -明治剣客浪漫譚-）是日本漫画家和月伸宏于1994年—1999年在日本《周刊少年Jump》上连载的少年漫画，单行本旧版共28卷，完全版共22卷。截止到2020年，漫画单行本的累计发行量已突破7200万册。", update:"2025-08-28", list: [{name:'1',content:[{name:'上',file:'1_0.pdf'},{name:'中',file:'1_1.pdf'},{name:'下',file:'1_2.pdf'}]}]},
         
