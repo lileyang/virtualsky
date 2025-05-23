@@ -1,11 +1,11 @@
 <template>
-    <div class="header">
+    <div class="header" v-show="this.$route.path !== '/Search'">
         <div class="icon">
         </div>
         <div class="title" @click="goPage('/Classic')">
         {{ title }}
         </div>
-        <div class="search" @click="showAlert('搜索功能还不能使用')">
+        <div class="search" @click="goSearch()">
             <span class="iconfont icon-icon-test"></span>
             <span>点击搜索你想要的</span>
             
@@ -28,6 +28,9 @@ export default {
                 this.$router.push(path);
                 sessionStorage.setItem('storyScrollY', 0)
             }   
+        },
+        goSearch(){
+            this.$router.push('/Search');
         },
     }
 }

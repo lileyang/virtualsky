@@ -7,6 +7,7 @@ import StoryMenu from '@/views/StoryMenu.vue'
 import StoryPlay from '@/views/StoryPlay.vue'
 import BookMenu from '@/views/BookMenu.vue'
 import PdfViewer from '@/views/PdfViewer';
+import SearchView from '@/views/SearchView.vue';
 
 Vue.use(VueRouter) 
 
@@ -21,6 +22,7 @@ const router = new VueRouter({
       {path:'/StoryPlay', component:StoryPlay},
       {path:'/BookMenu', component: BookMenu},
       {path:'/PdfViewer', component: PdfViewer},
+      {path:'/Search', component: SearchView}
     ],
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {

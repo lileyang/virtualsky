@@ -6,6 +6,8 @@ import AppPage from './components/AppPage.vue'
 import 'normalize.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+//资源文件
+import {resource} from '@/data/resource.js'
 
 // 创建 axios 实例（可选）
 const axiosInstance = axios.create({
@@ -22,6 +24,7 @@ Vue.config.productionTip = true
 
 Vue.component('AppPage', AppPage)
 
+Vue.prototype.$bookList = resource;
 
 new Vue({
   render: h => h(App),
