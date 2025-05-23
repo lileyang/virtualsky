@@ -143,9 +143,12 @@ export default {
 
         const page = await this.pdfDoc.getPage(pageNum);
         const containerWidth = this.$refs.scrollContainer?.clientWidth || 800;
+
         const viewport = page.getViewport({ scale: 1 });
         const scale = containerWidth / viewport.width;
-        const scaledViewport = page.getViewport({ scale });
+
+        const dpr = window.devicePixelRatio || 1;
+        const scaledViewport = page.getViewport({ scale: scale * dpr });
 
         const canvasRef = this.$refs['canvas' + pageNum];
         const canvas = Array.isArray(canvasRef) ? canvasRef[0] : canvasRef;
@@ -160,7 +163,11 @@ export default {
         canvas.width = scaledViewport.width;
         canvas.height = scaledViewport.height;
 
-        this.$set(this.pageHeights, pageNum - 1, scaledViewport.height);
+        // 设置 CSS 尺寸为视觉宽度
+        canvas.style.width = `${scaledViewport.width / dpr}px`;
+        canvas.style.height = `${scaledViewport.height / dpr}px`;
+
+        this.$set(this.pageHeights, pageNum - 1, scaledViewport.height / dpr);
 
         const renderContext = {
           canvasContext: context,
