@@ -11,8 +11,8 @@
             植物大战僵尸
         </span>
         <span 
-        :class="{ active: $route.path === '/Cartoon' }"
-        @click="goPage('/Cartoon')">
+        :class="{ active: $route.path === '/Comics' }"
+        @click="goPage('/Comics')">
             在线漫画
         </span>
     </div>

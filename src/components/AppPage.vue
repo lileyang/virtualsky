@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <AppHeader :title='pageTitle'></AppHeader>
-    <AppFooter v-show="$route.path === '/Home' || $route.path === '/Classic' || $route.path === '/Cartoon'"></AppFooter>
+    <AppFooter v-show="$route.path === '/Home' || $route.path === '/Classic' || $route.path === '/Comics'"></AppFooter>
     <!-- <AppBody :url='pageUrl'></AppBody> -->
     <router-view></router-view>
     
