@@ -11,6 +11,7 @@
     <div class="list" v-for="(item, index) in searchList" :key="index">
       <ListItem :item="item"></ListItem>
     </div>
+    <div class="tips" v-show="searchList.length=== 0">无结果</div>
   </div>
 </template>
 
@@ -83,7 +84,15 @@ export default {
       box-sizing: border-box;
     }
   }
-
+  .tips{
+    width: 100vw;
+    height: 100vh;
+    font-size: 6vw;
+    color: #995c0a;
+    padding-top: 10vw;
+    text-align: center;
+    position: absolute;
+  }
   .input {
     width: 100%;     /* 改成100% */
     display: flex;
