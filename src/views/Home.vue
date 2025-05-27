@@ -1,6 +1,19 @@
 <template>
   <div class="body">
-    <img src="@/assets/img/img_welcome.jpg" class="welcome-img" alt="">
+    <!-- <img src="@/assets/img/img_welcome.jpg" class="welcome-img" alt=""> -->
+    <div id="carouselExampleInterval" class="carousel slide"  data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+          <img src="@/assets/img/wel1.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="@/assets/img/wel2.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="@/assets/img/wel3.jpg" class="d-block w-100">
+        </div>
+      </div>
+    </div>
     <div class="channel" v-for="(channel, channelIndex) in channels" :key="channelIndex">
       <div class="lable">
         <span>{{channel.name}}</span>
