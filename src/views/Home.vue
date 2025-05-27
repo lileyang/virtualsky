@@ -1,55 +1,53 @@
 <template>
   <div class="body">
-    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button
-          v-for="(item, index) in items"
-          :key="index"
-          type="button"
-          data-bs-target="#carouselExampleRide"
-          :data-bs-slide-to="index"
-          :class="{ active: index === 0 }"
-          :aria-current="index === 0 ? 'true' : undefined"
-          :aria-label="'Slide ' + (index + 1)"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item" v-for="(item, index) in items" :key="index" :class="{ active: index === 0}" data-bs-interval="3000">
-          <img 
-          :src="item.img" 
-          class="carousel-img d-block w-100" 
-          @click="$router.push({ path: '/StoryMenu', query: { story: item } })"
-          />
+    <img src="@/assets/img/img_welcome.jpg" class="welcome-img" alt="">
+    <div class="channel" v-for="(channel, channelIndex) in channels" :key="channelIndex">
+      <div class="lable">
+        <span>{{channel.name}}</span>
+        <span class="more" @click="more(channel)">更多 ></span>
+        </div>
+      <div class="lable-content">
+        <div 
+          class="card" style="width: 18rem;" 
+          v-for="(story, index) in channel.list.slice(0, 2)" :key="index"
+          @click="goToStoryMenu(story)">
+          <img :src="story.img" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title col-16 text-truncate">{{story.name}}</h5>
+          </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <div class="list" v-for="(item, index) in items" :key="index">
-      <ListItem :item="item"></ListItem>
     </div>
   </div>
 </template>
 
 <script>
-import ListItem from '../components/ListItem.vue'
+
 export default {
   name: 'myHome',
   props: ['url'],
   components:{
-    'ListItem':ListItem
+    
   },
   data(){
     return{
-      items: this.$bookList.home
-      //items:[{}]
+      channels: this.$resource.bookList,
     }
+  },
+  methods: {
+    more(channel){
+      localStorage.setItem('cachedChannel', JSON.stringify(channel))
+      this.$router.push({path: 'StoryList'})
+    },
+    goToStoryMenu(item) {
+      if(item.type === 'audio'){
+        localStorage.setItem('cachedStory', JSON.stringify(item))
+        this.$router.push({ path: '/StoryMenu' });
+      }else if(item.type === 'pdf'){
+        localStorage.setItem('cachedBook', JSON.stringify(item))
+        this.$router.push({ path: '/BookMenu'});
+      }
+    },
   }
 }
 </script>
@@ -58,30 +56,54 @@ export default {
 .body {
   width: 100vw;
   height: calc(100vh - 10vw);
-  background-color: white;
+  background-color: whitesmoke;
   overflow-y: auto;
-}
-
-.carousel {
-  .carousel-item {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  .welcome-img{
     width: 100vw;
-    height: 100vw;
+    
+  }
+  .lable {
+    color: brown;
+    font-family: 'MyFont';
+    font-size: 5vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  span{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .more{
+    color: rgb(235, 79, 18);
+  }
+  a{
+    text-decoration: none;
+    border: none;
+  }
 
-    .carousel-img {
-      width: 100vw;
-      height: 100vw;
-      object-fit: cover;
+  .lable-content {
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    .card {
+      max-width: 40vw;
+      color: saddlebrown;
+      flex: 1;
+      --bs-card-border-width:null;
     }
   }
-  
-  .card{
-    width: 100vw;
-    height: 20vh;
-    background-color: pink;
-    text-align: center;
+  .card-body{
+    color: saddlebrown;
+    background-color: wheat;
+    border-radius: 0 0 0.375rem 0.375rem;
+  }
+  .card-title{
+    font-family: 'MyFont';
+    font-size: 5vw;
   }
 }
 </style>

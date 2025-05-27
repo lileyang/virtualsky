@@ -3,18 +3,18 @@
         <span 
         :class="{ active: $route.path === '/Classic' }"
         @click="goPage('/Classic')">
-            名著故事
-        </span>
-        <span 
-        :class="{ active: $route.path === '/Home' }"
-        @click="goPage('/Home')">
-            植物大战僵尸
+            儿童有声故事
         </span>
         <span 
         :class="{ active: $route.path === '/Comics' }"
         @click="goPage('/Comics')">
             在线漫画
         </span>
+        <!-- <span 
+        :class="{ active: $route.path === '/PlantsVsZombies' }"
+        @click="goPage('/PlantsVsZombies')">
+            植物大战僵尸
+        </span> -->
     </div>
 </template>
 

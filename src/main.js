@@ -24,7 +24,7 @@ Vue.config.productionTip = true
 
 Vue.component('AppPage', AppPage)
 
-Vue.prototype.$bookList = resource;
+Vue.prototype.$resource = resource;
 
 new Vue({
   render: h => h(App),

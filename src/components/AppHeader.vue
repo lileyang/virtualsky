@@ -2,7 +2,7 @@
     <div class="header" v-show="this.$route.path !== '/Search'">
         <div class="icon">
         </div>
-        <div class="title" @click="goPage('/Classic')">
+        <div class="title" @click="goPage('/Home')">
         {{ title }}
         </div>
         <div class="search" @click="goSearch()">
@@ -43,7 +43,7 @@ export default {
     display: flex;
     width: 100vw;
     height: 10vw;
-    background-color: rgb(245, 245, 245);
+    background-color: white;
     line-height: 10vw;
     
     .icon {

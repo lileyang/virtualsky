@@ -2,7 +2,7 @@
   <div class="story" ref="scroll">
     <div class="head">
       <button class="back-btn" @click="goBack">返回</button>
-      <div class="name">{{ this.story.name }}</div>
+      <div class="name">{{ story.name }}</div>
     </div>
     <div>
       <img class="img" :src="story.img" alt="" />
@@ -19,7 +19,7 @@
         @click="goPlay(item)"
       >
         <span>{{ item }}</span>
-        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjhweCIgaGVpZ2h0PSIyOHB4IiB2aWV3Qm94PSIwIDAgMjggMjgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+eGlucmVuX2ljX3BsYXlAMng8L3RpdGxlPgogICAgPGcgaWQ9Iumhtemdoi0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0i5LiT6L6R5YiG5Lqr6JC95Zyw6aG1X2g177yIMjAyMjAyMjPlrprnqL/vvInlpIfku70iIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMzEuMDAwMDAwLCAtNzAzLjAwMDAwMCkiPgogICAgICAgICAgICA8ZyBpZD0i57yW57uELTI4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNTU3LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9Iue8lue7hC0xMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYuMDAwMDAwLCA2Ni4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0i5oyJ6ZKu5pKtIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMTUuMDAwMDAwLCA4MC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsLTMiIGZpbGwtb3BhY2l0eT0iMC4xMjI5ODQ1NTkiIGZpbGw9IiNGRjY0NjQiIGN4PSIxNCIgY3k9IjE0IiByPSIxNCI+PC9jaXJjbGU+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTE2LjQzOTk3ODYsMTAuOTA4MzI4NyBMMjAuMjY3OTU0LDE2LjczMzUwODYgQzIwLjYyNTg1MSwxNy4yNzgxMzQ1IDIwLjQ3NDQ3NzMsMTguMDA5NzczOSAxOS45Mjk4NTE0LDE4LjM2NzY3MDkgQzE5LjczNzM4ODMsMTguNDk0MTQ2NyAxOS41MTIxMjE3LDE4LjU2MTUzODUgMTkuMjgxODIxNSwxOC41NjE1Mzg1IEwxMS42MjU4NzA4LDE4LjU2MTUzODUgQzEwLjk3NDE3NDgsMTguNTYxNTM4NSAxMC40NDU4NzA4LDE4LjAzMzIzNDUgMTAuNDQ1ODcwOCwxNy4zODE1Mzg1IEMxMC40NDU4NzA4LDE3LjE1MTIzODMgMTAuNTEzMjYyNiwxNi45MjU5NzE3IDEwLjYzOTczODMsMTYuNzMzNTA4NiBMMTQuNDY3NzEzNywxMC45MDgzMjg3IEMxNC44MjU2MTA3LDEwLjM2MzcwMjcgMTUuNTU3MjUwMSwxMC4yMTIzMjkxIDE2LjEwMTg3NjEsMTAuNTcwMjI2MSBDMTYuMjM2NDY5MSwxMC42NTg2NzI5IDE2LjM1MTUzMTgsMTAuNzczNzM1NyAxNi40Mzk5Nzg2LDEwLjkwODMyODcgWiIgaWQ9IuS4ieinkuW9ouWkh+S7vS0yIiBmaWxsPSIjRkY0NjQ2IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS40NTM4NDYsIDEzLjk4NDYxNSkgcm90YXRlKC0yNzAuMDAwMDAwKSB0cmFuc2xhdGUoLTE1LjQ1Mzg0NiwgLTEzLjk4NDYxNSkgIj48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjhweCIgaGVpZ2h0PSIyOHB4IiB2aWV3Qm94PSIwIDAgMjggMjgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYuNDM5OTc4NiwxMC45MDgzMjg3IDIwLjI2Nzk1NCwxNi43MzM1MDg2IEMyMC42MjU4NTEsMTcuMjc4MTM0NSAyMC40NzQ0NzcxLDE4LjAwOTc3MzkgMTkuOTI5ODUxNCwxOC4zNjc2NzA5IEMxOS43MzczODgzLDE4LjQ5NDE0NjcgMTkuNTEyMTIxNywxOC41NjE1Mzg1IDE5LjI4MTgyMTUsMTguNTYxNTM4NSBMMTEuNjI1ODcwOCwxOC41NjE1Mzg1IEMxMC45NzQxNzQ4LDE4LjU2MTUzODUgMTAuNDQ1ODcwOCwxOC4wMzMyMzQ1IDEwLjQ0NTg3MDgsMTcuMzgxNTM4NSBDMTAuNDQ1ODcwOCwxNy4xNTEyMzgzIDEwLjUxMzI2MjYsMTYuOTI1OTcxNyAxMC42Mzk3MzgzLDE2LjczMzUwODYgTDE0LjQ2NzcxMzcsMTAuOTA4MzI4NyBDMTQuODI1NjEwNywxMC4zNjM3MDI3IDE1LjU1NzI1MDEsMTAuMjEyMzI5MSAxNi4xMDE4NzYxLDEwLjU3MDIyNjEgQzE2LjIzNjQ2OTEsMTAuNjU4NjcyOSAxNi4zNTE1MzE4LDEwLjc3MzczNTcgMTYuNDM5OTc4NiwxMC45MDgzMjg3WiIgZmlsbD0iI0ZGNDU2NDYiLz48L3N2Zz4=" />
       </div>
     </div>
   </div>
@@ -33,17 +33,9 @@ export default {
     }
   },
   mounted() {
-    const queryStory = this.$route.query.story
-    if (queryStory && typeof queryStory === 'object') {
-      this.story = queryStory
-      localStorage.setItem('cachedStory', JSON.stringify(queryStory))
-    } else {
-      const cached = localStorage.getItem('cachedStory')
-      if (cached) {
-        this.story = JSON.parse(cached)
-      }
-    }
-
+    const queryStory = JSON.parse(localStorage.getItem('cachedStory'))
+    this.story = queryStory
+    
     // 恢复滚动位置
     this.$nextTick(() => {
       setTimeout(() => {

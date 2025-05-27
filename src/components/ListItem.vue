@@ -1,7 +1,7 @@
 <template>
-    <div class="item">
+    <div class="item"  @click="$emit('click')">
         <img :src="item.img" alt="">
-        <div class="content" @click="openStory()">
+        <div class="content">
             <div>{{ item.name }}</div>
             <div>{{ item.detail }}</div>
             <div>更新时间：<span>{{ item.update }}</span></div>
@@ -13,16 +13,6 @@
 
 export default {
     props:['item'],
-    methods:{
-        openStory(){
-            if(this.item.type === 'audio'){
-                this.$router.push({ path: '/StoryMenu', query: { story: this.item } });
-            }else if(this.item.type === 'pdf'){
-                this.$router.push({ path: '/BookMenu', query: { book: this.item } });
-            }
-            
-        }
-    }
 }
 </script>
 

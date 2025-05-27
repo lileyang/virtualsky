@@ -34,16 +34,8 @@ export default {
     }
   },
   mounted() {
-    const querybook = this.$route.query.book
-    if (querybook && typeof querybook === 'object') {
-      this.book = querybook
-      localStorage.setItem('cachedbook', JSON.stringify(querybook))
-    } else {
-      const cached = localStorage.getItem('cachedbook')
-      if (cached) {
-        this.book = JSON.parse(cached)
-      }
-    }
+    const querybook = JSON.parse(localStorage.getItem('cachedBook'))
+    this.book = querybook
 
     // 恢复滚动位置
     this.$nextTick(() => {

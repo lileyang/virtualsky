@@ -1,17 +1,23 @@
 <template>
   <div class="App">
-    <AppPage :pageTitle='name' :pageUrl='url'></AppPage>
+    <AppHeader :title='name'></AppHeader>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 
+import AppHeader from '@/components/AppHeader.vue';
+
 export default {
   data(){
     return {
       name: '虚拟天空',
-      url: 'https://www.mhua5.com/index.php'
+      url: 'https://virtualsky.pages.dev'
     }
+  },
+  components: {
+    'AppHeader': AppHeader,
   }
 }
 </script>
