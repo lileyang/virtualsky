@@ -123,6 +123,7 @@ export default {
     border-radius: 0 0 0.375rem 0.375rem;
   }
   .card-title{
+    color: #c24d1faf;
     font-family: 'MyFont';
     font-size: 5vw;
   }
