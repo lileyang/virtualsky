@@ -29,6 +29,18 @@
         />
         <span class="time-text">{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</span>
       </div>
+      <div class="timer-setting">
+      <label for="stop-timer">定时停止：</label>
+      <select id="stop-timer" v-model.number="selectedStopOption" @change="setStopTimer">
+        <option :value="0">不设置</option>
+        <option :value="5">5分钟</option>
+        <option :value="10">10分钟</option>
+        <option :value="30">30分钟</option>
+        <option :value="60">60分钟</option>
+        <option :value="-1">本集播放完后停止</option>
+      </select>
+    </div>
+
     </div>
     <div class="toast" v-if="toastMessage">{{ toastMessage }}</div>
   </div>
@@ -48,7 +60,10 @@ export default {
       playList: [],   // 播放列表
       currentIndex: 0,// 当前播放的索引
       toastMessage: '',   // ✅ Toast 内容
-      toastTimeout: null  // ✅ Toast 定时器
+      toastTimeout: null,  // ✅ Toast 定时器
+      stopTimer: null,
+      stopOptions: [0, 5, 10, 30, 60, -1],  // 分钟数，-1 表示播放完当前一集后停止
+      selectedStopOption: 0
     }
   },
   mounted() {
@@ -69,11 +84,12 @@ export default {
         audio.addEventListener('timeupdate', () => {
           this.currentTime = audio.currentTime
         })
-        audio.addEventListener('ended', () => {
+        /*audio.addEventListener('ended', () => {
           this.isPlaying = false
           this.currentTime = 0
           this.playNext() // 播放下一集
-        })
+        })*/
+        audio.addEventListener('ended', this.onAudioEnded)
         audio.addEventListener('play', () => {
           this.isPlaying = true
         })
@@ -153,6 +169,41 @@ export default {
       this.toastTimeout = setTimeout(() => {
         this.toastMessage = ''
       }, 2000)
+    },
+    // 设置定时停止播放
+    setStopTimer() {
+      clearTimeout(this.stopTimer)
+
+      if (this.selectedStopOption === 0) {
+        this.showPlayTip('定时取消')
+        return
+      }
+
+      if (this.selectedStopOption === -1) {
+        this.showPlayTip('本集播放完后停止')
+        return
+      }
+
+      const minutes = this.selectedStopOption
+      this.stopTimer = setTimeout(() => {
+        const audio = this.$refs.audio
+        if (audio && !audio.paused) {
+          audio.pause()
+          this.showPlayTip('播放已停止')
+          this.selectedStopOption = 0
+        }
+      }, minutes * 60 * 1000)
+
+      this.showPlayTip(`将在 ${minutes} 分钟后停止播放`)
+    },
+
+    // 修改 ended 行为以支持本集结束不再自动播放下一集
+    onAudioEnded() {
+      if (this.selectedStopOption === -1) {
+        this.showPlayTip('本集播放完毕，已停止')
+        return // 不播放下一集
+      }
+      this.playNext()
     }
   }
 
@@ -348,4 +399,20 @@ export default {
   90% { opacity: 1; }
   100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
 }
+
+.timer-setting {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  font-size: 3.5vw;
+  color: #333;
+  select {
+    padding: 1vw;
+    border-radius: 2vw;
+    border: 1px solid #aaa;
+    font-size: 3.5vw;
+    background-color: white;
+  }
+}
+
 </style>
