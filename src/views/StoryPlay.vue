@@ -50,6 +50,7 @@
 export default {
   data() {
     return {
+      context: '',
       storyName: '',
       fileName: '',
       img: '',
@@ -102,14 +103,10 @@ export default {
   methods: {
     loadAudio() {
       if (!this.storyName || !this.fileName) return
-      const relativePath = `./${this.storyName}/${this.fileName}.m4a`
-      try {
-        const context = require.context('@/assets/audio', true, /\.m4a$/)
-        this.audioSrc = context(relativePath).default
-      } catch (e) {
-        console.warn('音频文件找不到：', relativePath)
-        this.showPlayTip('音频加载失败')
-      }
+
+      // 使用 public 下的路径，public 目录在运行时映射为根路径
+      this.audioSrc = `/audio/${this.storyName}/${this.fileName}.m4a`
+
       this.$nextTick(() => {
         const audio = this.$refs.audio
         if (audio) {

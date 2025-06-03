@@ -18,7 +18,7 @@
         :key="listIdx"
       >
         <span>第{{ listItem.name }}卷</span>
-        <div class="content" v-for="(item,index) in listItem.content" :key="index" @click="goPlay('/' + book.type + '/' + book.name + '/' + book.list[listIdx].name + '/' + item.file)">
+        <div class="content" v-for="(item,index) in listItem.content" :key="index" @click="goPlay(book.type + '/' + book.name + '/' + book.list[listIdx].name + '/' + item.file)">
           {{ item.name }}
         </div>
       </div>
