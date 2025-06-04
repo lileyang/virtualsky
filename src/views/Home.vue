@@ -1,16 +1,16 @@
 <template>
   <div class="body">
-    <!-- <img src="@/assets/img/img_welcome.jpg" class="welcome-img" alt=""> -->
+    <!-- <img src="/img/img_welcome.jpg" class="welcome-img" alt=""> -->
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="true">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="2000">
-          <img src="@/assets/img/wel3.jpg" class="d-block w-100">
+          <img src="img/wel3.jpg" class="d-block w-100">
         </div>
         <div class="carousel-item" data-bs-interval="2000">
-          <img src="@/assets/img/wel1.jpg" class="d-block w-100">
+          <img src="img/wel1.jpg" class="d-block w-100">
         </div>
         <div class="carousel-item" data-bs-interval="3000">
-          <img src="@/assets/img/wel2.jpg" class="d-block w-100">
+          <img src="img/wel2.jpg" class="d-block w-100">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
