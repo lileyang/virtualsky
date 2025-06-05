@@ -2,7 +2,7 @@
     <div class="item"  @click="$emit('click')">
         <img :src="item.img" alt="">
         <div class="content">
-            <div>{{ item.name }}</div>
+            <div>{{ item.name }} <span :class="item.finished?'finished':'updating'">{{ item.finished ? '【已完结】' : '【更新中】' }}</span></div>
             <div>{{ item.detail }}</div>
             <div>更新时间：<span>{{ item.update }}</span></div>
         </div>
@@ -30,6 +30,12 @@ export default {
         height: calc(15vh - 2px);
         width: calc(15vh - 2px);
         border-radius: 8px 0px 0px 8px;
+    }
+    .finished{
+        color: #ee5b5b !important;
+    }
+    .updating{
+        color: #41b1e6 !important;
     }
     .content {
         display: flex;
