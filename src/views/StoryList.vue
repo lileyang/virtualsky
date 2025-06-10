@@ -68,7 +68,7 @@ export default {
         this.$router.push({ path: '/StoryMenu' });
       }else if(item.type === 'pdf'){
         localStorage.setItem('cachedBook', JSON.stringify(item))
-        this.$router.push({ path: '/BookMenu'});
+        this.$router.push({ path: '/PDFMenu'});
       }
     }
   }

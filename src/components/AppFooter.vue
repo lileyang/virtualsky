@@ -1,14 +1,14 @@
 <template>
     <div class="footer">
         <span 
-        :class="{ active: $route.path === '/Classic' }"
-        @click="goPage('/Classic')">
-            儿童有声故事
+        :class="{ active: $route.path === '/Home' }"
+        @click="goPage('/Home')">
+            故事天地
         </span>
         <span 
-        :class="{ active: $route.path === '/Comics' }"
-        @click="goPage('/Comics')">
-            在线漫画
+        :class="{ active: $route.path === '/EnglishHome' }"
+        @click="goPage('/EnglishHome')">
+            学习乐园
         </span>
         <!-- <span 
         :class="{ active: $route.path === '/PlantsVsZombies' }"
@@ -41,7 +41,7 @@ export default {
     display: flex;
     width: 100vw;
     height: 12vw;
-    background-color: rgb(245, 245, 245);
+    background-color: wheat;
     text-align: center;
     line-height: 12vw;
     justify-content: space-evenly;

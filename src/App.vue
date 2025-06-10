@@ -1,6 +1,7 @@
 <template>
   <div class="App">
     <AppHeader :title='name'></AppHeader>
+    <AppFooter v-show="$route.path === '/Home' || $route.path === '/EnglishHome'"></AppFooter>
     <router-view></router-view>
   </div>
 </template>
@@ -8,7 +9,7 @@
 <script>
 
 import AppHeader from '@/components/AppHeader.vue';
-
+import AppFooter from '@/components/AppFooter.vue';
 export default {
   data(){
     return {
@@ -18,6 +19,7 @@ export default {
   },
   components: {
     'AppHeader': AppHeader,
+    'AppFooter': AppFooter,
   }
 }
 </script>

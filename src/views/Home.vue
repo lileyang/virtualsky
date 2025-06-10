@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <!-- <img src="/img/img_welcome.jpg" class="welcome-img" alt=""> -->
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="true">
+    <!-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="true">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="2000">
           <img src="img/wel3.jpg" class="d-block w-100">
@@ -21,7 +21,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-    </div>
+    </div> -->
     <div class="channel" v-for="(channel, channelIndex) in channels" :key="channelIndex">
       <div class="lable">
         <span>{{channel.name}}</span>
@@ -66,7 +66,7 @@ export default {
         this.$router.push({ path: '/StoryMenu' });
       }else if(item.type === 'pdf'){
         localStorage.setItem('cachedBook', JSON.stringify(item))
-        this.$router.push({ path: '/BookMenu'});
+        this.$router.push({ path: '/PDFMenu'});
       }
     },
   }
@@ -79,7 +79,7 @@ export default {
   height: calc(100vh - 10vw);
   background-color: whitesmoke;
   overflow-y: auto;
-  padding-top: 10px;
+  //padding-top: 10px;
   padding-bottom: 40px;
   .welcome-img{
     width: 100vw;

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>我的文件仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6828173671809260" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .h-40{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">📁 我的文件存储</h1>
+
+    <!-- 文件列表 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+      <!-- 文件项 -->
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 1</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：15KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-01</p>
+        <a href="files/1.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 1（朗读）</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：686KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-01</p>
+        <a href="files/1.mp3" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 2</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：15KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-02</p>
+        <a href="files/2.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 2（朗读）</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：848KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-02</p>
+        <a href="files/2.mp3" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 3</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：14KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-03</p>
+        <a href="files/3.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 3（朗读）</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：617KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-03</p>
+        <a href="files/3.mp3" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 4</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：14KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-04</p>
+        <a href="files/4.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 4（朗读）</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：680KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-04</p>
+        <a href="files/4.mp3" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 5</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：15KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-05</p>
+        <a href="files/5.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 5（朗读）</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：800KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-05</p>
+        <a href="files/5.mp3" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 6</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：14KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-05</p>
+        <a href="files/6.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 6（朗读）</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：633KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-05</p>
+        <a href="files/6.mp3" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 7</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：15KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-06</p>
+        <a href="files/7.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+        <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
+        <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 7（朗读）</h2>
+        <p class="text-sm text-gray-600 mb-1">大小：727KB</p>
+        <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-06</p>
+        <a href="files/7.mp3" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
