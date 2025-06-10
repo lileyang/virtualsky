@@ -1,5 +1,10 @@
 <template>
   <div class="body">
+    <div class="head">
+      <button class="back-btn" @click="goBack">返回</button>
+      <div class="name">{{ book.name }}</div>
+    </div>
+    <div class="lable"></div>
     <div class="lable-content">
         <div 
           class="card" style="width: 18rem;" 
@@ -26,6 +31,9 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      this.$router.back()
+    },
     goToStory(story) {
       localStorage.setItem('cachedbookstory', JSON.stringify(story))
       this.$router.push({path: 'BookStory'})
@@ -42,6 +50,38 @@ export default {
   overflow-y: auto;
   //padding-top: 10px;
   padding-bottom: 40px;
+  font-family: 'MyFont';
+  .head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 12vw;
+    background-color: rgba(221, 139, 16, 0.5);
+    .back-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 2vw 4vw;
+      margin-left: 1vw;
+      border-radius: 8px;
+      font-size: 4vw;
+      color: saddlebrown;
+      box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    .name {
+      position: absolute;
+      left: 0;
+      right: 0;
+      font-size: 6vw;
+      color: brown;
+      text-align: center;
+    }
+  }
+
   .welcome-img{
     width: 100vw;
     
