@@ -174,18 +174,35 @@ export const resource = {
   "study":{
     english: [
       {
-        name:"70天搞定1600词汇",
+        name:"70天搞定初中1600词汇",
         list:[
-          {name:"A Young Officer and an Old Soldier", img:"/english/70days/1/1.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-01",  file: '/english/70days/1/1.txt', audio:'/english/70days/1/1.mp3'},
-          {name:"Are You Going to Thank Her?", img:"/english/70days/2/2.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-02",  file: '/english/70days/2/2.txt', audio:'/english/70days/2/2.mp3'},
-          {name:"Sam and Tod", img:"/english/70days/3/3.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-03",  file: '/english/70days/3/3.txt', audio:'/english/70days/2/3.mp3'},
-          {name:"In the Bar", img:"/english/70days/4/4.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-04",  file: '/english/70days/4/4.txt', audio:'/english/70days/4/4.mp3'},
-          {name:"Three Black Umbrellas", img:"/english/70days/5/5.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-05",  file: '/english/70days/5/5.txt', audio:'/english/70days/5/5.mp3'},
-          {name:"Friends", img:"/english/70days/6/6.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-06",  file: '/english/70days/6/6.txt', audio:'/english/70days/6/6.mp3'},
-          {name:'The "Deaf" Wife', img:"/english/70days/7/7.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-07",  file: '/english/70days/7/7.txt', audio:'/english/70days/7/7.mp3'},
-          {name:"We Really Don't Know", img:"/english/70days/8/8.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-08",  file: '/english/70days/8/8.txt', audio:'/english/70days/8/8.mp3'},
-          {name:"Raymond", img:"/english/70days/9/9.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-09",  file: '/english/70days/9/9.txt', audio:'/english/70days/9/9.mp3'},
-          {name:"That's Why!", img:"/english/70days/10/10.jpg", detail:"英语阅读70天搞定1600词汇", update:"2025-06-10",  file: '/english/70days/10/10.txt', audio:'/english/70days/10/10.mp3'},
+          {name:"A Young Officer and an Old Soldier", img:"/english/70days/1/1.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-01",  file: '/english/70days/1/1.txt', audio:'/english/70days/1/1.mp3'},
+          {name:"Are You Going to Thank Her?", img:"/english/70days/2/2.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-02",  file: '/english/70days/2/2.txt', audio:'/english/70days/2/2.mp3'},
+          {name:"Sam and Tod", img:"/english/70days/3/3.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-03",  file: '/english/70days/3/3.txt', audio:'/english/70days/2/3.mp3'},
+          {name:"In the Bar", img:"/english/70days/4/4.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-04",  file: '/english/70days/4/4.txt', audio:'/english/70days/4/4.mp3'},
+          {name:"Three Black Umbrellas", img:"/english/70days/5/5.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-05",  file: '/english/70days/5/5.txt', audio:'/english/70days/5/5.mp3'},
+          {name:"Friends", img:"/english/70days/6/6.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-06",  file: '/english/70days/6/6.txt', audio:'/english/70days/6/6.mp3'},
+          {name:'The "Deaf" Wife', img:"/english/70days/7/7.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-07",  file: '/english/70days/7/7.txt', audio:'/english/70days/7/7.mp3'},
+          {name:"We Really Don't Know", img:"/english/70days/8/8.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-08",  file: '/english/70days/8/8.txt', audio:'/english/70days/8/8.mp3'},
+          {name:"Raymond", img:"/english/70days/9/9.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-09",  file: '/english/70days/9/9.txt', audio:'/english/70days/9/9.mp3'},
+          {name:"That's Why!", img:"/english/70days/10/10.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-10",  file: '/english/70days/10/10.txt', audio:'/english/70days/10/10.mp3'},
+          {name:"Living like a Pig", img:"/english/70days/11/11.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-11",  file: '/english/70days/11/11.txt', audio:'/english/70days/11/11.mp3'},
+          {name:"Greenland and lceland", img:"/english/70days/12/12.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-12",  file: '/english/70days/12/12.txt', audio:'/english/70days/12/12.mp3'},
+          {name:"A Competition of Lying", img:"/english/70days/13/13.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-13",  file: '/english/70days/13/13.txt', audio:'/english/70days/13/13.mp3'},
+          {name:"Sports in America", img:"/english/70days/14/14.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-14",  file: '/english/70days/14/14.txt', audio:'/english/70days/14/14.mp3'},
+          {name:"The Apple Tree", img:"/english/70days/15/15.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-15",  file: '/english/70days/15/15.txt', audio:'/english/70days/15/15.mp3'},
+          {name:"Pupils in China ", img:"/english/70days/16/16.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-16",  file: '/english/70days/16/16.txt', audio:'/english/70days/16/16.mp3'},
+        ]
+      },
+      {
+        name:"40天搞定高中3500词汇",
+        list:[
+          {name:"Fall in Love with English", img:"/english/40days/1/1.jpg", detail:"英语阅读-40篇短文搞定高中3500词汇", update:"2025-06-11",  file: '/english/40days/1/1.txt', audio:'/english/40days/1/1.mp3'},
+          {name:"Different Countries Have Different Kinds of Englishes", img:"/english/40days/2/2.jpg", detail:"英语阅读-40篇短文搞定高中3500词汇", update:"2025-06-12",  file: '/english/40days/2/2.txt', audio:'/english/40days/2/2.mp3'},
+          {name:"A Hard Trip", img:"/english/40days/3/3.jpg", detail:"英语阅读-40篇短文搞定高中3500词汇", update:"2025-06-13",  file: '/english/40days/3/3.txt', audio:'/english/40days/3/3.mp3'},
+          {name:"A Horrible Earthquake", img:"/english/40days/4/4.jpg", detail:"英语阅读-40篇短文搞定高中3500词汇", update:"2025-06-14",  file: '/english/40days/4/4.txt', audio:'/english/40days/4/4.mp3'},
+          {name:"The Great President", img:"/english/40days/5/5.jpg", detail:"英语阅读-40篇短文搞定高中3500词汇", update:"2025-06-15",  file: '/english/40days/5/5.txt', audio:'/english/40days/5/5.mp3'},
+          {name:"A Brave Maid", img:"/english/40days/6/6.jpg", detail:"英语阅读-40篇短文搞定高中3500词汇", update:"2025-06-16",  file: '/english/40days/6/6.txt', audio:'/english/40days/6/6.mp3'},
         ]
       }
     ]

@@ -8,7 +8,7 @@
         <span 
         :class="{ active: $route.path === '/EnglishHome' }"
         @click="goPage('/EnglishHome')">
-            学习乐园
+            英语阅读
         </span>
         <!-- <span 
         :class="{ active: $route.path === '/PlantsVsZombies' }"
