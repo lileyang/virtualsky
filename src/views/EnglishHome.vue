@@ -3,7 +3,7 @@
     <div class="book" v-for="(book, index) in englishbooks" :key="index">
       <div class="lable">
         <span>{{book.name}}</span>
-        <span class="more" @click="more(book)">更多 ></span>
+        <span class="more" @click="more(book)" v-show="book.list.length > 2"> 更多 ></span>
         </div>
       <div class="lable-content">
         <div 
@@ -39,8 +39,15 @@ export default {
       this.$router.push({path: 'BookMenu'})
     },
     goToStory(story) {
+      console.log(story)
       localStorage.setItem('cachedbookstory', JSON.stringify(story))
-      this.$router.push({path: 'BookStory'})
+      if(story.type == 'pdf'){
+        this.$router.push({path: 'PdfViewer', query: {  pdfUrl: story.file }})
+      }else{
+        this.$router.push({path: 'BookStory'})
+      }
+      
+      
     },
   }
 }
@@ -81,10 +88,13 @@ export default {
   .lable-content {
     width: 100vw;
     display: flex;
+    margin: 2.5vw;
+    gap: 5vw;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     text-align: center;
     .card {
+      
       width: 45vw;
       max-width: 45vw;
       color: saddlebrown;

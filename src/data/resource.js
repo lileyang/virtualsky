@@ -174,6 +174,12 @@ export const resource = {
   "study":{
     english: [
       {
+        name:'30天搞定英语语法',
+        list:[
+          {type:'pdf', name:"30天搞定英语语法", img:"/english/30days/30days.jpg", detail:"英语语法超图解 30天用思维导图战胜英语语法", update:"2025-06-12", file:"/english/30days/30days.pdf"},
+        ]
+      },
+      {
         name:"70天搞定初中1600词汇",
         list:[
           {name:"A Young Officer and an Old Soldier", img:"/english/70days/1/1.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-01",  file: '/english/70days/1/1.txt', audio:'/english/70days/1/1.mp3'},
@@ -192,6 +198,20 @@ export const resource = {
           {name:"Sports in America", img:"/english/70days/14/14.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-14",  file: '/english/70days/14/14.txt', audio:'/english/70days/14/14.mp3'},
           {name:"The Apple Tree", img:"/english/70days/15/15.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-15",  file: '/english/70days/15/15.txt', audio:'/english/70days/15/15.mp3'},
           {name:"Pupils in China ", img:"/english/70days/16/16.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-16",  file: '/english/70days/16/16.txt', audio:'/english/70days/16/16.mp3'},
+          {name:"Say it with Flowers", img:"/english/70days/17/17.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-17",  file: '/english/70days/17/17.txt', audio:'/english/70days/17/17.mp3'},
+          {name:"Learning by Doing and Going ", img:"/english/70days/18/18.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-18",  file: '/english/70days/18/18.txt', audio:'/english/70days/18/18.mp3'},
+          {name:"Jane Came Home too Late ", img:"/english/70days/19/19.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-19",  file: '/english/70days/19/19.txt', audio:'/english/70days/19/19.mp3'},
+          {name:"My Son's Questions ", img:"/english/70days/20/20.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-20",  file: '/english/70days/20/20.txt', audio:'/english/70days/20/20.mp3'},
+          {name:"I Did a Silly Thing", img:"/english/70days/21/21.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-21",  file: '/english/70days/21/21.txt', audio:'/english/70days/21/21.mp3'},
+          {name:"Snakes", img:"/english/70days/22/22.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-22",  file: '/english/70days/22/22.txt', audio:'/english/70days/22/22.mp3'},
+          {name:"A Call from the Secretary", img:"/english/70days/23/23.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-23",  file: '/english/70days/23/23.txt', audio:'/english/70days/23/23.mp3'}, 
+          {name:"My Collection of Sea Shells", img:"/english/70days/24/24.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-24",  file: '/english/70days/24/24.txt', audio:'/english/70days/24/24.mp3'},
+          {name:"Breakfast Is Important", img:"/english/70days/25/25.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-25",  file: '/english/70days/25/25.txt', audio:'/english/70days/25/25.mp3'}, 
+          {name:"The Proper Way to Give Gifts", img:"/english/70days/26/26.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-26",  file: '/english/70days/26/26.txt', audio:'/english/70days/26/26.mp3'},
+          {name:"Making Electricity", img:"/english/70days/27/27.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-27",  file: '/english/70days/27/27.txt', audio:'/english/70days/27/27.mp3'},
+          {name:"One Real Man", img:"/english/70days/28/28.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-28",  file: '/english/70days/28/28.txt', audio:'/english/70days/28/28.mp3'},
+          {name:"Where Is My Pet Dog?", img:"/english/70days/29/29.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-29",  file: '/english/70days/29/29.txt', audio:'/english/70days/29/29.mp3'},
+          {name:"Why Shouldn't We Smoke?", img:"/english/70days/30/30.jpg", detail:"英语阅读-70篇短文搞定初中1600词汇", update:"2025-06-30",  file: '/english/70days/30/30.txt', audio:'/english/70days/30/30.mp3'},
         ]
       },
       {
