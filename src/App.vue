@@ -27,7 +27,7 @@ export default {
 <style lang="less" scoped>
 @font-face {
   font-family: 'MyFont';
-  src: url('@/assets/font/AlimamaDaoLiTi.ttf') format('truetype');
+  src: url('@/assets/font/alimama/DaoLiTi/AlimamaDaoLiTi.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

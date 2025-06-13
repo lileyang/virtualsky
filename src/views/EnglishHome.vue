@@ -89,6 +89,7 @@ export default {
     width: 100vw;
     display: flex;
     margin: 2.5vw;
+    margin-bottom: 40px;
     gap: 5vw;
     flex-wrap: wrap;
     justify-content: flex-start;

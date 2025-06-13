@@ -17,6 +17,8 @@ const axiosInstance = axios.create({
 
 Vue.use(VueAxios, axiosInstance) 
 
+Vue.prototype.$axios = axiosInstance 
+
 import router from './router/index.js'
 
 

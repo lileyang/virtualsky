@@ -47,6 +47,15 @@
 export default {
   name: 'myHome',
   props: ['url'],
+  mounted() {
+    /*
+    this.$axios.get("http://localhost/queryStory").then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    });
+    */
+  },
   components:{
     
   },
@@ -110,6 +119,7 @@ export default {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+    margin-bottom: 40px;
     .card {
       max-width: 40vw;
       color: saddlebrown;
