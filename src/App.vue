@@ -33,7 +33,7 @@ export default {
 }
 
 *{
-  overflow: hidden;
+  overflow-y: auto;
   margin: 0;
   padding: 0;
 }

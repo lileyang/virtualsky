@@ -87,7 +87,7 @@ export default {
   width: 100vw;
   height: calc(100vh - 10vw);
   background-color: whitesmoke;
-  overflow-y: auto;
+  // overflow-y: auto;
   //padding-top: 10px;
   padding-bottom: 40px;
   .welcome-img{

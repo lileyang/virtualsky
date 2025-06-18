@@ -81,7 +81,7 @@ export default {
   width: 100vw;
   height: calc(100vh - 10vw);
   background-color: white;
-  overflow-y: auto;
+  // overflow-y: auto;
 }
 
 .carousel {

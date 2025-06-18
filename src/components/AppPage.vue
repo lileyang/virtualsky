@@ -35,7 +35,7 @@ export default {
   // 让 router-view 占满除头尾之外的剩余空间
   .router-view {
     flex: 1;
-    overflow-y: auto;
+    // overflow-y: auto;
   }
 }
 

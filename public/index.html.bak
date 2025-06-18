@@ -27,7 +27,7 @@
         <h2 class="text-lg font-semibold mb-2">70篇英语短文搞定1600词汇 1</h2>
         <p class="text-sm text-gray-600 mb-1">大小：15KB</p>
         <p class="text-sm text-gray-600 mb-2">更新时间：2025-06-01</p>
-        <a href="files/1.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600 text-white text-center py-1 px-3 rounded">下载</a>
+        <a href="files/1.docx" class="mt-auto inline-block bg-blue-500 hover:bg-blue-600  text-white text-center py-1 px-3 rounded">下载</a>
       </div>
       <div class="bg-white rounded-lg shadow p-4 flex flex-col">
         <img src="files/icon2.png" alt="封面" class="h-40 object-cover rounded mb-4">
