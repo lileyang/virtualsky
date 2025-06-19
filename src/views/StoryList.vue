@@ -90,6 +90,8 @@ export default {
 <style lang="less" scoped>
 .body {
   width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
   min-height: 100vh;
   background-color: white;
   padding-bottom: 10vw;
@@ -100,51 +102,52 @@ export default {
 
 .container {
   width: 100%;
-  max-width: 960px;
-  padding: 0 4vw;
+  min-height: 100vh;
+  background-color: #fff;
+  font-family: 'MyFont', sans-serif;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .head {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  font-family: 'MyFont';
-  height: 12vw;
-  max-height: 60px;
-  background-color: rgba(221, 139, 16, 0.5);
-  margin-bottom: 2vw;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 1.5rem 2rem;
+    background-color: rgba(221, 139, 16, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .back-btn {
-    position: absolute;
-    left: 4vw;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    color: saddlebrown;
-    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
-    backdrop-filter: blur(4px);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+    .back-btn {
+      position: absolute;
+      left: 1rem;
+      background-color: rgba(255, 255, 255, 0.6);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: saddlebrown;
+      box-shadow: 0 2px 4px rgba(0, 128, 0, 0.2);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-  .name {
-    font-size: 1.5rem;
-    color: brown;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 60%;
-    text-align: center;
+    .name {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.4rem;
+      color: brown;
+      font-weight: bold;
+      white-space: nowrap;
+    }
   }
-}
 
 .carousel {
-  margin: 0.2vw 0.2vw;
+  max-width: 500px;
+  margin: 0 auto;
   border-radius: 2vw;
   overflow: hidden;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
@@ -153,7 +156,7 @@ export default {
     width: 100%;
     .carousel-item {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 16;
 
       .carousel-img {
         width: 100%;

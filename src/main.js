@@ -50,6 +50,13 @@ Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.component('AppPage', AppPage)
 
+const baseSize = 16
+function setRem() {
+  const scale = document.documentElement.clientWidth / 375
+  document.documentElement.style.fontSize = (baseSize * Math.min(scale, 2)) + 'px'
+}
+setRem()
+window.addEventListener('resize', setRem)
 // 在 new Vue 之前，先异步加载 resource.json
 axios.get('/resource.json')
   .then(({ data }) => {
