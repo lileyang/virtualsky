@@ -22,7 +22,7 @@
     <!-- 搜索结果 -->
     <div v-if="searchList.length">
       <div class="list" v-for="(item, index) in searchList" :key="index">
-        <ListItem :item="item" />
+        <ListItem :item="item" @click="goToStoryMenu(item)" />
       </div>
     </div>
 
@@ -79,6 +79,15 @@ export default {
       this.debounceTimer = setTimeout(() => {
         this.search()
       }, 500) // 500ms 无操作后自动搜索
+    },
+    goToStoryMenu(item) {
+      if (item.type === 'audio') {
+        localStorage.setItem('cachedStory', JSON.stringify(item))
+        this.$router.push({ path: '/StoryMenu' })
+      } else if (item.type === 'pdf') {
+        localStorage.setItem('cachedBook', JSON.stringify(item))
+        this.$router.push({ path: '/PDFMenu' })
+      }
     }
   }
 }
