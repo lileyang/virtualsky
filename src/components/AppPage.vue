@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <AppHeader :title='pageTitle'></AppHeader>
+    <AppHeader :title='pageTitle' v-show="$route.path === '/StoryPlay'"></AppHeader>
     <AppFooter v-show="$route.path === '/PlantsVsZombies' || $route.path === '/Classic' || $route.path === '/Comics'"></AppFooter>
     <!-- <AppBody :url='pageUrl'></AppBody> -->
     <router-view></router-view>

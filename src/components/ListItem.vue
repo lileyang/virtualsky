@@ -1,66 +1,114 @@
 <template>
-    <div class="item"  @click="$emit('click')">
-        <img :src="item.img" alt="">
-        <div class="content">
-            <div>{{ item.name }} <span :class="item.finished?'finished':'updating'">{{ item.finished ? '【已完结】' : '【更新中】' }}</span></div>
-            <div>{{ item.detail }}</div>
-            <div>更新时间：<span>{{ item.update }}</span></div>
-        </div>
+  <div class="list-card" @click="$emit('click')">
+    <img :src="item.img" alt="封面" class="list-img" />
+    <div class="info">
+      <div class="title">{{ item.name }}</div>
+      <div class="type-tag">{{ getTypeText(item.type) }}</div>
     </div>
+  </div>
 </template>
 
 <script>
-
 export default {
-    props:['item'],
+  name: 'ListItem',
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    getTypeText(type) {
+      switch (type) {
+        case 'audio': return '音频故事'
+        case 'pdf': return '图文绘本'
+        default: return '未知类型'
+      }
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
-.item{
+.list-card {
+  background-color: #fffdf8;
+  border-radius: 2vw;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 3vw;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .list-img {
+    width: 20vw;
+    height: 20vw;
+    min-width: 20vw;
+    border-radius: 1vw;
+    object-fit: cover;
+    margin-right: 4vw;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .info {
+    flex: 1;
     display: flex;
-    height: 15vh;
-    margin: 1vh;
-    border-radius: 8px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: sandybrown;
-    font-family: 'MyFont', sans-serif;
-    img{
-        height: calc(15vh - 2px);
-        width: calc(15vh - 2px);
-        border-radius: 8px 0px 0px 8px;
-    }
-    .finished{
-        color: #ee5b5b !important;
-    }
-    .updating{
-        color: #41b1e6 !important;
-    }
-    .content {
-        display: flex;
-        flex-direction: column;
-        margin-left: 8px;
-        max-height: 100%;
-        padding-right: 4px;
-        :nth-child(1) {
-            color: green;
-        }
-        :nth-child(2) {
-            color: sandybrown;
-            font-size: 12px;
-            overflow: auto;
-        }
-        :nth-child(3){
-            font-size: 12px;
-            margin-top: 4px;
-            margin-bottom: 4px;
-            color: gray;
-            span{
-                color: lightgrey;
-            }
-        }
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      font-size: 4.5vw;
+      font-weight: bold;
+      color: #4d2e10;
+      margin-bottom: 1vw;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
+    .type-tag {
+      font-size: 3.5vw;
+      color: #a36b2d;
+      background-color: #fff1db;
+      display: inline-block;
+      padding: 0.5vw 1.5vw;
+      border-radius: 1vw;
+      width: fit-content;
+    }
+  }
+}
+
+/* PC端样式：宽度较大、单位改为 px，更规整 */
+@media screen and (min-width: 768px) {
+  .list-card {
+    border-radius: 12px;
+    padding: 16px;
+
+    .list-img {
+      width: 120px;
+      height: 120px;
+      min-width: 120px;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .info {
+      .title {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+
+      .type-tag {
+        font-size: 14px;
+        padding: 4px 10px;
+        border-radius: 6px;
+      }
+    }
+  }
 }
 </style>

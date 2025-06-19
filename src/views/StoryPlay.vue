@@ -211,182 +211,192 @@ export default {
 <style lang="less" scoped>
 .app {
   width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
+  min-height: 100vh;
+  background: #f8f5f1;
   position: relative;
+  font-family: 'Helvetica Neue', sans-serif;
+  padding: 0 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-family: "Helvetica Neue", sans-serif;
-  background: #f0f0f0;
-  padding: 0 5vw;
+  justify-content: start;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .bg {
   position: fixed;
+  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(16px);
-  opacity: 0.3;
+  filter: blur(20px) brightness(0.8);
+  opacity: 0.35;
   z-index: 0;
 }
 
 .back-btn {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #3e2723;
+  font-weight: bold;
   border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: 10px 20px;
   font-size: 16px;
-  color: green;
-  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
-  backdrop-filter: blur(4px);
-  cursor: pointer;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  z-index: 2;
+  cursor: pointer;
 }
 
 .back-btn:hover {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #fff;
   transform: scale(1.05);
 }
 
-.story-name{
-  margin-bottom: 4vw;
-  font-size: larger;
-  font-weight: 800;
-  color: brown;
+.story-name {
+  margin-top: 80px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #4e342e;
+  text-align: center;
+  z-index: 1;
 }
 
 .mid-layout {
   display: flex;
-  width: 100vw;
-  justify-content: space-evenly;
-  .btn{
-    margin: auto 0;
-    width: 16vw;
-    height: 16vw;
-    background-color: rgba(255, 255, 255, 0.1);
+  justify-content: space-around;
+  align-items: center;
+  margin: 40px 0;
+  width: 100%;
+  z-index: 1;
+
+  .btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
     border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 16px;
-    color: green;
-    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
-    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    color: #3e2723;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
     cursor: pointer;
-    transition: all 0.3s ease;
+  }
+
+  .btn:active {
+    transform: scale(0.95);
   }
 }
 
 .icon {
-  width: 50vw;
-  height: 50vw;
-  border-radius: 20px;
+  width: 50%;
+  height: 50%;
+  border-radius: 16px;
   object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
-  z-index: 2;
 }
+
 .icon:hover {
   transform: scale(1.05);
 }
 
-/* 自定义播放器样式 */
 .custom-audio-player {
-  margin-top: 8vh;
-  width: 80vw;
-  min-width: 80vw;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4vw;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(6px);
-  padding: 4vw;
+  margin-top: 30px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2vw;
-  position: relative;
-  z-index: 10;
-}
-
-.play-btn {
-  background: none;
-  border: none;
-  font-size: 4vw;
-  height: 6vw;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.time-text {
-  font-size: 3vw;
-  color: #333;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.slider {
-  flex-grow: 1;
-  appearance: none;
-  height: 2vw;
-  background: #ccc;
-  border-radius: 1vw;
-  touch-action: pan-y;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* 滑块样式 */
-.slider::-webkit-slider-thumb {
-  appearance: none;
-  width: 4vw;   /* 适当调大滑块直径 */
-  height: 4vw;
-  background: green;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: 0px; /* 让滑块垂直居中，计算方式：-(滑块高度 - 轨道高度)/2 */
-}
-
-/* Firefox 下的滑块 */
-.slider::-moz-range-thumb {
-  width: 4vw;
-  height: 4vw;
-  background: green;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
+  gap: 16px;
 }
 
 .audio {
   display: flex;
   align-items: center;
-  gap: 10px;
   width: 100%;
-  flex-wrap: nowrap;
-  overflow: hidden;
+  gap: 10px;
+}
+
+.play-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.slider {
+  appearance: none;
+  flex: 1;
+  height: 6px;
+  background: #cfd8dc;
+  border-radius: 3px;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #4caf50;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #4caf50;
+  border-radius: 50%;
+  border: none;
+}
+
+.time-text {
+  font-size: 14px;
+  white-space: nowrap;
+  color: #333;
+}
+
+.timer-setting {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  color: #3e2723;
+
+  select {
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    background-color: #fff;
+  }
 }
 
 .toast {
-  display: block;
   position: fixed;
-  width: 80vw;
-  bottom: 50vh;
+  bottom: 40vh;
   left: 50%;
-  transform: translateX(0%);
-  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.65);
   color: #fff;
-  padding: 2vw 4vw;
-  border-radius: 4vw;
-  font-size: 4vw;
-  z-index: 999;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  z-index: 9999;
   animation: fade-in-out 2s ease-in-out;
 }
 
@@ -397,19 +407,30 @@ export default {
   100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
 }
 
-.timer-setting {
-  display: flex;
-  align-items: center;
-  gap: 1vw;
-  font-size: 3.5vw;
-  color: #333;
-  select {
-    padding: 1vw;
-    border-radius: 2vw;
-    border: 1px solid #aaa;
-    font-size: 3.5vw;
-    background-color: white;
+@media screen and (max-width: 600px) {
+  .story-name {
+    font-size: 5vw;
+  }
+  .icon {
+    width: 40vw;
+    height: 40vw;
+    border-radius: 4vw;
+  }
+  .btn {
+    width: 14vw !important;
+    height: 14vw !important;
+    font-size: 6vw !important;
+  }
+  .play-btn {
+    font-size: 6vw;
+  }
+  .time-text,
+  .timer-setting,
+  .timer-setting select {
+    font-size: 3.8vw;
+  }
+  .custom-audio-player {
+    padding: 5vw;
   }
 }
-
 </style>

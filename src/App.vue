@@ -1,6 +1,6 @@
 <template>
   <div class="App">
-    <AppHeader :title='name'></AppHeader>
+    <AppHeader :title='name' v-show="$route.path !== '/StoryPlay'"></AppHeader>
     <AppFooter v-show="$route.path === '/Home' || $route.path === '/EnglishHome'"></AppFooter>
     <router-view></router-view>
   </div>
