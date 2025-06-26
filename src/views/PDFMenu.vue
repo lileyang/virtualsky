@@ -74,7 +74,7 @@ export default {
   font-family: 'MyFont', sans-serif;
   width: 100vw;
   height: 100vh;
-  overflow-y: auto;
+  // overflow-y: auto;
   .head {
     position: relative;
     display: flex;

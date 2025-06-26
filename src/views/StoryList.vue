@@ -3,13 +3,13 @@
     <div class="container">
       <div class="head">
         <button class="back-btn" @click="goBack">返回</button>
-        <div class="name">{{ this.channel.name }}</div>
+        <div class="name">{{ this.channel.title }}</div>
       </div>
 
       <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button
-            v-for="(item, index) in this.channel.list"
+            v-for="(item, index) in this.channel.list.slice(0, 3)"
             :key="index"
             type="button"
             data-bs-target="#carouselExampleRide"
@@ -23,7 +23,7 @@
         <div class="carousel-inner">
           <div
             class="carousel-item"
-            v-for="(item, index) in this.channel.list"
+            v-for="(item, index) in this.channel.list.slice(0,3)"
             :key="index"
             :class="{ active: index === 0 }"
             data-bs-interval="3000"

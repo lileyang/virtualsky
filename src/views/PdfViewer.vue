@@ -228,7 +228,7 @@ export default {
 <style scoped>
 .pdf-scroll-container {
   height: 100vh;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 .pdf-page-placeholder {
   width: 100%;

@@ -2,7 +2,7 @@
   <div class="body">
     <div class="book" v-for="(book, index) in englishbooks" :key="index">
       <div class="lable">
-        <span>{{book.name}}</span>
+        <span>{{book.title}}</span>
         <span class="more" @click="more(book)" v-show="book.list.length > 2"> 更多 ></span>
         </div>
       <div class="lable-content">
@@ -58,7 +58,7 @@ export default {
   width: 100vw;
   height: calc(100vh - 10vw);
   background-color: whitesmoke;
-  overflow-y: auto;
+  // overflow-y: auto;
   //padding-top: 10px;
   padding-bottom: 40px;
   .welcome-img{

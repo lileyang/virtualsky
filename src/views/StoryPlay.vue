@@ -53,6 +53,7 @@ export default {
       context: '',
       storyName: '',
       fileName: '',
+      series: '',
       img: '',
       audioSrc: '',
       isPlaying: false,
@@ -72,6 +73,7 @@ export default {
     this.img = query.img
     this.storyName = query.storyName
     this.fileName = query.file
+    this.series = query.series
     this.playList = JSON.parse(query.list || '[]')
     this.currentIndex = this.playList.indexOf(this.fileName)
     this.loadAudio()
@@ -105,7 +107,7 @@ export default {
       if (!this.storyName || !this.fileName) return
 
       // 使用 public 下的路径，public 目录在运行时映射为根路径
-      this.audioSrc = `/audio/${this.storyName}/${this.fileName}.m4a`
+      this.audioSrc = `/audio/${this.series}/${this.storyName}/${this.fileName}.m4a`
 
       this.$nextTick(() => {
         const audio = this.$refs.audio

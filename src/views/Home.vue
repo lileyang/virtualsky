@@ -26,13 +26,13 @@
 
       <div class="channel" v-for="(channel, channelIndex) in channels" :key="channelIndex">
         <div class="lable">
-          <span>{{channel.name}}</span>
+          <span>{{channel.title}}</span>
           <span class="more" @click="more(channel)">更多 ></span>
         </div>
         <div class="lable-content">
           <div 
             class="card" 
-            v-for="(story, index) in channel.list.slice(0, 3)" 
+            v-for="(story, index) in channel.list.slice(-3).reverse()" 
             :key="index"
             @click="goToStoryMenu(story)">
             <img :src="story.img" class="card-img-top" alt="...">

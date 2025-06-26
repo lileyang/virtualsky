@@ -24,7 +24,7 @@
     </div>
     <div class="channel" v-for="(channel, channelIndex) in channels" :key="channelIndex">
       <div class="lable">
-        <span>{{channel.name}}</span>
+        <span>{{channel.title}}</span>
         <span class="more" @click="more(channel)">更多 ></span>
         </div>
       <div class="lable-content">

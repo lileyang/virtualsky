@@ -64,6 +64,7 @@ export default {
           storyName: this.story.name,
           file: item,
           img: this.story.img,
+          series: this.story.series,
           list: JSON.stringify(this.story.list),
         }
       })
@@ -127,7 +128,7 @@ export default {
 
     .img {
       width: 100%;
-      max-width: 800px;
+      max-width: 500px;
       aspect-ratio: 9 / 9;
       object-fit: cover;
       border-radius: 16px;
