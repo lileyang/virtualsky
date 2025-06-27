@@ -59,7 +59,7 @@ export default {
       if (window.history.length > 1) {
         this.$router.back()
       } else {
-        this.$router.push('/') // 或跳转到首页/频道页等
+        this.$router.push('/').catch(() => {}); // 或跳转到首页/频道页等
       }
     },
     search() {
@@ -81,14 +81,24 @@ export default {
       }, 500) // 500ms 无操作后自动搜索
     },
     goToStoryMenu(item) {
+      const token = localStorage.getItem('token')
+
+      if (!token) {
+        // 没有登录，跳转到登录页，不带 redirect 参数
+        this.$router.push({ path: '/login' }).catch(() => {})
+        return
+      }
+
+      // 登录状态，继续跳转
       if (item.type === 'audio') {
         localStorage.setItem('cachedStory', JSON.stringify(item))
-        this.$router.push({ path: '/StoryMenu' })
+        this.$router.push({ path: '/StoryMenu' }).catch(() => {})
       } else if (item.type === 'pdf') {
         localStorage.setItem('cachedBook', JSON.stringify(item))
-        this.$router.push({ path: '/PDFMenu' })
+        this.$router.push({ path: '/PDFMenu' }).catch(() => {})
       }
     }
+
   }
 }
 </script>

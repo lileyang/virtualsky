@@ -3,13 +3,13 @@
     <div class="container">
       <div class="head">
         <button class="back-btn" @click="goBack">返回</button>
-        <div class="name">{{ this.channel.title }}</div>
+        <div class="name">{{ channel.title }}</div>
       </div>
 
       <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button
-            v-for="(item, index) in this.channel.list.slice(0, 3)"
+            v-for="(item, index) in (channel.list || []).slice(0, 3)"
             :key="index"
             type="button"
             data-bs-target="#carouselExampleRide"
@@ -23,7 +23,7 @@
         <div class="carousel-inner">
           <div
             class="carousel-item"
-            v-for="(item, index) in this.channel.list.slice(0,3)"
+            v-for="(item, index) in (channel.list || []).slice(0, 3)"
             :key="index"
             :class="{ active: index === 0 }"
             data-bs-interval="3000"
@@ -46,7 +46,7 @@
         </button>
       </div>
 
-      <div class="list" v-for="(item, index) in this.channel.list" :key="index">
+      <div class="list" v-for="(item, index) in (channel.list || [])" :key="index">
         <ListItem :item="item" @click="goToStoryMenu(item)" />
       </div>
     </div>
@@ -61,13 +61,18 @@ export default {
   components: {
     ListItem
   },
-  mounted() {
-    const queryChannel = JSON.parse(localStorage.getItem('cachedChannel'))
-    this.channel = queryChannel
-  },
   data() {
     return {
-      channel: ''
+      channel: {
+        title: '',
+        list: []
+      }
+    }
+  },
+  mounted() {
+    const queryChannel = JSON.parse(localStorage.getItem('cachedChannel'))
+    if (queryChannel && queryChannel.list) {
+      this.channel = queryChannel
     }
   },
   methods: {
@@ -77,10 +82,10 @@ export default {
     goToStoryMenu(item) {
       if (item.type === 'audio') {
         localStorage.setItem('cachedStory', JSON.stringify(item))
-        this.$router.push({ path: '/StoryMenu' })
+        this.$router.push({ path: '/StoryMenu' }).catch(() => {})
       } else if (item.type === 'pdf') {
         localStorage.setItem('cachedBook', JSON.stringify(item))
-        this.$router.push({ path: '/PDFMenu' })
+        this.$router.push({ path: '/PDFMenu' }).catch(() => {})
       }
     }
   }
@@ -110,40 +115,40 @@ export default {
 }
 
 .head {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    padding: 1.5rem 2rem;
-    background-color: rgba(221, 139, 16, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 1.5rem 2rem;
+  background-color: rgba(221, 139, 16, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .back-btn {
-      position: absolute;
-      left: 1rem;
-      background-color: rgba(255, 255, 255, 0.6);
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      color: saddlebrown;
-      box-shadow: 0 2px 4px rgba(0, 128, 0, 0.2);
-      backdrop-filter: blur(4px);
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .name {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.4rem;
-      color: brown;
-      font-weight: bold;
-      white-space: nowrap;
-    }
+  .back-btn {
+    position: absolute;
+    left: 1rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: saddlebrown;
+    box-shadow: 0 2px 4px rgba(0, 128, 0, 0.2);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: 0.3s ease;
   }
+
+  .name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    color: brown;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
 
 .carousel {
   max-width: 500px;
@@ -154,6 +159,7 @@ export default {
 
   .carousel-inner {
     width: 100%;
+
     .carousel-item {
       width: 100%;
       aspect-ratio: 16 / 16;
@@ -169,6 +175,7 @@ export default {
 
   .carousel-indicators {
     bottom: 1.5vw;
+
     button {
       width: 1.8vw;
       height: 1.8vw;

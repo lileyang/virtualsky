@@ -1,7 +1,6 @@
 <template>
   <div class="body">
     <div class="container">
-      <!-- <img src="/img/wel3.jpg" class="welcome-img" alt="" /> -->
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="true">
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="2000">
@@ -26,7 +25,7 @@
 
       <div class="channel" v-for="(channel, channelIndex) in channels" :key="channelIndex">
         <div class="lable">
-          <span>{{channel.title}}</span>
+          <span>{{ channel.title }}</span>
           <span class="more" @click="more(channel)">更多 ></span>
         </div>
         <div class="lable-content">
@@ -37,7 +36,7 @@
             @click="goToStoryMenu(story)">
             <img :src="story.img" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-truncate">{{story.name}}</h5>
+              <h5 class="card-title text-truncate">{{ story.name }}</h5>
             </div>
           </div>
         </div>
@@ -54,6 +53,23 @@ export default {
     return {
       channels: this.$resource.bookList,
     };
+  },
+  async created() {
+    /*
+    try {
+      // token 持久化校验接口（你需确保后端已提供 /api/user/check）
+      const res = await this.$http.get('http://172.16.0.93:8080/api/user/check');
+      console.log('Token 有效，用户信息：', res.data);
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        alert('登录已过期，请重新登录');
+        localStorage.removeItem('token');
+        this.$router.push('/login');
+      } else {
+        console.error('其它错误：', err);
+      }
+    }
+    */
   },
   methods: {
     more(channel) {
@@ -82,11 +98,6 @@ export default {
   .container {
     width: 90vw;
     margin: 0 auto;
-  }
-
-  .welcome-img {
-    width: 100%;
-    margin-bottom: 2vw;
   }
 
   .lable {
@@ -136,7 +147,7 @@ export default {
     background-color: wheat;
     padding: 1vw;
     border-radius: 0 0 0.5vw 0.5vw;
-    justify-items:center
+    justify-items: center;
   }
 
   .card-title {
@@ -146,10 +157,6 @@ export default {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  // 可选：限制高度防止过高撑开
-  .card-title, .card-body {
     line-height: 2vw;
   }
 }
@@ -171,21 +178,6 @@ export default {
         height: 100%;
         object-fit: cover;
         display: block;
-      }
-    }
-  }
-
-  .carousel-indicators {
-    bottom: 1.5vw;
-    button {
-      width: 1.8vw;
-      height: 1.8vw;
-      border-radius: 50%;
-      margin: 0 0.8vw;
-      background-color: #ccc;
-
-      &.active {
-        background-color: #ef6b2e;
       }
     }
   }

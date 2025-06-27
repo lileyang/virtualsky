@@ -67,7 +67,7 @@ export default {
           series: this.story.series,
           list: JSON.stringify(this.story.list),
         }
-      })
+      }).catch(() => {});
     }
   }
 }

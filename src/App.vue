@@ -1,6 +1,6 @@
 <template>
   <div class="App">
-    <AppHeader :title='name' v-show="$route.path !== '/StoryPlay'"></AppHeader>
+    <AppHeader :title='name' v-show="$route.path !== '/StoryPlay' || $route.path !== '/BookStory' || $route.path !== '/StoryMenu'"></AppHeader>
     <AppFooter v-show="$route.path === '/Home' || $route.path === '/EnglishHome'"></AppFooter>
     <router-view></router-view>
   </div>
@@ -14,7 +14,7 @@ export default {
   data(){
     return {
       name: '虚拟天空',
-      url: 'https://virtualsky.pages.dev'
+      url: 'http://virtual-sky.online'
     }
   },
   components: {

@@ -27,12 +27,12 @@ export default {
         },
         goPage(path){
             if (this.$route.path !== path) {
-                this.$router.push(path);
+                this.$router.push({ path}).catch(() => {})
                 sessionStorage.setItem('storyScrollY', 0)
             }   
         },
         goSearch(){
-            this.$router.push('/Search');
+            this.$router.push('/Search').catch(() => {});
         },
     }
 }

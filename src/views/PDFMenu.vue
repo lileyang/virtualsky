@@ -62,7 +62,7 @@ export default {
         query: {
           pdfUrl: path
         }
-      })
+      }).catch(() => {});
     }
   }
 }

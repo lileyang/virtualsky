@@ -36,15 +36,15 @@ export default {
   methods: {
     more(book){
       localStorage.setItem('cachedbook', JSON.stringify(book))
-      this.$router.push({path: 'BookMenu'})
+      this.$router.push({path: 'BookMenu'}).catch(() => {});
     },
     goToStory(story) {
       console.log(story)
       localStorage.setItem('cachedbookstory', JSON.stringify(story))
       if(story.type == 'pdf'){
-        this.$router.push({path: 'PdfViewer', query: {  pdfUrl: story.file }})
+        this.$router.push({path: 'PdfViewer', query: {  pdfUrl: story.file }}).catch(() => {});
       }else{
-        this.$router.push({path: 'BookStory'})
+        this.$router.push({path: 'BookStory'}).catch(() => {});
       }
       
       
