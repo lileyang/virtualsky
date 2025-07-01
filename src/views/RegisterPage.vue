@@ -4,8 +4,8 @@
     <form @submit.prevent="handleRegister">
       <input v-model="username" placeholder="用户名" required />
       <input v-model="password" type="password" placeholder="密码" required />
-      <input v-model="email" placeholder="邮箱" />
-      <input v-model="tel" placeholder="电话" />
+      <input v-model="email" placeholder="邮箱（非必填）" />
+      <input v-model="tel" placeholder="电话（非必填）" />
       <button type="submit">注册</button>
       <p class="switch" @click="$router.push('/login')">已有账号？去登录</p>
     </form>
@@ -28,7 +28,7 @@ export default {
   methods: {
     async handleRegister() {
         try {
-            const res = await axios.post(axios.defaults.baseURL +'api/register', {
+            const res = await axios.post(axios.defaults.baseURL +'/api/register', {
             username: this.username,
             email: this.email,
             tel: this.tel, // ✅ 添加 tel 字段
