@@ -28,7 +28,7 @@ export default {
   methods: {
     async handleRegister() {
         try {
-            const res = await axios.post('http://virtual-sky.online:8080/api/register', {
+            const res = await axios.post(axios.defaults.baseURL +'api/register', {
             username: this.username,
             email: this.email,
             tel: this.tel, // ✅ 添加 tel 字段

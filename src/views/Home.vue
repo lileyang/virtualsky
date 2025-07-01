@@ -31,7 +31,7 @@
         <div class="lable-content">
           <div 
             class="card" 
-            v-for="(story, index) in channel.list.slice(-3).reverse()" 
+            v-for="(story, index) in channel.title !='在线漫画' ?channel.list.slice(-3).reverse() : channel.list.slice(0,3)" 
             :key="index"
             @click="goToStoryMenu(story)">
             <img :src="story.img" class="card-img-top" alt="...">

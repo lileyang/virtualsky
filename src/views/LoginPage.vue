@@ -6,11 +6,13 @@
       <input v-model="password" type="password" placeholder="密码" required />
       <button type="submit">登录</button>
       <p class="switch" @click="$router.push('/register').catch(() => {});">还没有账号？去注册</p>
+      <p class="switch" @click="$router.push('/ForgetPassword').catch(() => {});">忘记密码？</p>
     </form>
   </div>
 </template>
 
 <script>
+import { EventBus } from '@/utils/EventBus';
 
 export default {
   name: 'LoginPage',
@@ -23,13 +25,16 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        const res = await this.$axios.post('http://virtual-sky.online:8080/api/login', {
+        const res = await this.$axios.post(this.$axios.defaults.baseURL + '/api/login', {
           username: this.username,
           password: this.password
+        }, {
+          withCredentials: true
         });
+
         if (res.data.success) {
           localStorage.setItem('token', res.data.token);
-          alert(res.data.message);
+          EventBus.$emit('auth-change');
           this.$router.push('/Home');
         } else {
           alert(res.data.message || '登录失败');
@@ -39,13 +44,21 @@ export default {
         alert('服务器错误');
       }
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.username = '';
+      vm.password = '';
+    });
   }
 };
 </script>
 
+
 <style scoped>
 .auth-page {
   width: 90vw;
+  max-width: 800px;
   margin: 5vw auto;
   font-family: 'MyFont';
   text-align: center;
@@ -56,7 +69,7 @@ input {
   width: 80%;
   margin: 2vw auto;
   padding: 2vw;
-  font-size: 4vw;
+  font-size: min(4vw, 24px);
   border: 1px solid #ccc;
   border-radius: 1vw;
 }
@@ -74,7 +87,7 @@ button {
 
 .switch {
   font-size: 3.5vw;
-  margin-top: 2vw;
+  margin-top: 4vw;
   color: #007bff;
   cursor: pointer;
 }
