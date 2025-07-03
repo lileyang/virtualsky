@@ -25,7 +25,7 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        const res = await this.$axios.post(this.$axios.defaults.baseURL + '/api/login', {
+        const res = await this.$axios.post('/login', {
           username: this.username,
           password: this.password
         }, {

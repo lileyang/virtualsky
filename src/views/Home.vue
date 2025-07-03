@@ -55,21 +55,7 @@ export default {
     };
   },
   async created() {
-    /*
-    try {
-      // token 持久化校验接口（你需确保后端已提供 /api/user/check）
-      const res = await this.$http.get('http://172.16.0.93:8080/api/user/check');
-      console.log('Token 有效，用户信息：', res.data);
-    } catch (err) {
-      if (err.response && err.response.status === 401) {
-        alert('登录已过期，请重新登录');
-        localStorage.removeItem('token');
-        this.$router.push('/login');
-      } else {
-        console.error('其它错误：', err);
-      }
-    }
-    */
+
   },
   methods: {
     more(channel) {

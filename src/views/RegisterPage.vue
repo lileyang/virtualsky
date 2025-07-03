@@ -28,7 +28,7 @@ export default {
   methods: {
     async handleRegister() {
         try {
-            const res = await axios.post(axios.defaults.baseURL +'/api/register', {
+            const res = await axios.post('/register', {
             username: this.username,
             email: this.email,
             tel: this.tel, // ✅ 添加 tel 字段

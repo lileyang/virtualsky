@@ -52,7 +52,7 @@ export default {
         const token = localStorage.getItem('token'); // 或 sessionStorage
         if (!token) return;
 
-        const res = await this.$axios.get('/api/user/me', {
+        const res = await this.$axios.get('/user/me', {
           headers: {
             Authorization: `Bearer ${token}`
           }

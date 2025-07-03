@@ -60,7 +60,7 @@ export default {
 
     this.loading = true;
     try {
-      const res = await this.$axios.get('/api/user/me', {
+      const res = await this.$axios.get('/user/me', {
         headers: { Authorization: 'Bearer ' + token }
       });
       this.user = res.data;
@@ -84,7 +84,7 @@ export default {
       this.savingProfile = true;
       try {
         const res = await this.$axios.post(
-          '/api/user/update',
+          '/user/update',
           { email: this.email, tel: this.tel },
           {
             headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
@@ -109,7 +109,7 @@ export default {
         this.changingPwd = true;
         try {
             const res = await this.$axios.post(
-            '/api/user/change-password',
+            '/user/change-password',
             {
                 oldPassword: this.oldPassword,
                 newPassword: this.newPassword

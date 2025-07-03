@@ -41,8 +41,9 @@ axios.get('/resource.json')
   })
 
 
+
 // ✅ 设置 axios 基础配置
-axios.defaults.baseURL = 'https://virtual-sky.online:8080'
+axios.defaults.baseURL = 'https://virtual-sky.online:8080/api'
 //axios.defaults.baseURL = 'http://172.16.0.93:8080'
 // axios.defaults.baseURL = 'https://localhost:8080'
 axios.defaults.timeout = 10000
