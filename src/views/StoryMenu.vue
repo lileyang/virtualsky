@@ -58,14 +58,17 @@ export default {
       if (scrollContainer) {
         sessionStorage.setItem('storyScrollY', scrollContainer.scrollTop)
       }
+      console.log(this.story.type)
       this.$router.push({
         path: '/StoryPlay',
         query: {
           storyName: this.story.name,
+          fileType: this.story.fileType,
           file: item,
           img: this.story.img,
           series: this.story.series,
           list: JSON.stringify(this.story.list),
+          
         }
       }).catch(() => {});
     }

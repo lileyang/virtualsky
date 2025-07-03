@@ -153,11 +153,12 @@ export default {
   .card-title {
     color: #c24d1faf;
     font-family: 'MyFont';
-    font-size: 1rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1rem;
+    line-height: 0.8rem;
+    margin:0.4rem;
   }
 }
 

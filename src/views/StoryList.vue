@@ -6,7 +6,7 @@
         <div class="name">{{ channel.title }}</div>
       </div>
 
-      <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
+      <!-- <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button
             v-for="(item, index) in (channel.list || []).slice(0, 3)"
@@ -44,7 +44,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> -->
 
       <div class="list" v-for="(item, index) in (channel.list || [])" :key="index">
         <ListItem :item="item" @click="goToStoryMenu(item)" />
@@ -202,19 +202,4 @@ export default {
   border-bottom: 1px solid #ddd;
 }
 
-@media screen and (max-width: 768px) {
-  .head {
-    height: 12vw;
-    max-height: none;
-
-    .back-btn {
-      font-size: 4vw;
-      padding: 2vw 4vw;
-    }
-
-    .name {
-      font-size: 5.5vw;
-    }
-  }
-}
 </style>
