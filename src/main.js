@@ -40,10 +40,21 @@ axios.get('/resource.json')
     }).$mount('#app')
   })
 
-
+//console.log(window.location)
 
 // ✅ 设置 axios 基础配置
-axios.defaults.baseURL = 'https://virtual-sky.online:8080/api'
+const hostname = window.location.hostname
+
+if(hostname === 'virtual-sky.online'){
+  axios.defaults.baseURL = 'http://virtual-sky.online:8080/api'  
+}else if(hostname === 'virtualsky.pages.dev'){
+  axios.defaults.baseURL = 'https://virtual-sky.online:8443/api'  
+}else{
+  axios.defaults.baseURL = 'https://localhost:8080/api'  
+}
+
+
+//axios.defaults.baseURL = 'https://virtual-sky.online:8080/api'
 //axios.defaults.baseURL = 'http://172.16.0.93:8080'
 // axios.defaults.baseURL = 'https://localhost:8080'
 axios.defaults.timeout = 10000

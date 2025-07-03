@@ -29,7 +29,7 @@ export default {
           username: this.username,
           password: this.password
         }, {
-          withCredentials: true
+          withCredentials: false
         });
 
         if (res.data.success) {
