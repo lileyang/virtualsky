@@ -44,18 +44,14 @@ axios.get('/resource.json')
 
 // ✅ 设置 axios 基础配置
 const hostname = window.location.hostname
-const protocol = window.location.protocol
-if(hostname === 'virtual-sky.online'){
-  if(protocol === 'https:'){
-    axios.defaults.baseURL = 'https://virtual-sky.online:8088/api'  
-  }else{
-    axios.defaults.baseURL = 'http://virtual-sky.online:8080/api'  
-  }
-  
-}else if(hostname === 'virtualsky.pages.dev'){
-  axios.defaults.baseURL = 'https://virtual-sky.online:8088/api'  
-}else{
-  axios.defaults.baseURL = 'https://localhost:8080/api'  
+//const protocol = window.location.protocol
+// 自动适配本地开发 / 线上部署，全部请求 "/api" 路由
+if (hostname === 'virtualsky.pages.dev') {
+  axios.defaults.baseURL = '/api';  // 会请求当前域名下的 /api
+} else if (hostname === 'localhost') {
+  axios.defaults.baseURL = 'http://localhost:8080/api';
+} else {
+  axios.defaults.baseURL = '/api';  // 其他情况默认也走当前域的代理
 }
 
 
